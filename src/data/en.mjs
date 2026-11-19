@@ -9,7 +9,7 @@ export default {
   ui: {
     nav: { services: 'Services', docs: 'Documents', how: 'How It Works', blog: 'Articles', about: 'About', faq: 'FAQ', contact: 'Contact' },
     skip: 'Skip to content',
-    online: { hi: 'Hi, need a hand?', on: 'Our admin is online now. Message us and we will review your document.', off: 'Our admin is offline. We reopen at 08:00 WIB, leave a message meanwhile.', close: 'Close' },
+    online: { hi: 'Hi, need a hand?', on: 'Our admin is online. Message us and we will review your document.', off: 'Our admin is still online and will reply to your chat. Office operations resume at 08:00 WIB.', close: 'Close' },
     area: 'Service areas', kicker: 'Guide',
     menu: 'Menu',
     waCta: 'Chat on WhatsApp',
@@ -193,7 +193,7 @@ export default {
   faq: [
     { q: 'How much does translation cost per page?', a: 'It depends on the document type, the number of pages and how soon you need it. Send a photo of the document first and we will give you an estimate before any work starts.' },
     { q: 'How long does it take?', a: 'It depends on the number of pages and the document type. The time estimate comes with the cost estimate. If you have a deadline, tell us from the start.' },
-    { q: 'Can I ask questions before sending documents?', a: 'Yes. Message us on WhatsApp any day between 08:00 and 20:00 WIB. Asking questions is free.' },
+    { q: 'Can I ask questions before sending documents?', a: 'Yes. Our WhatsApp chat is always online and every message gets a reply, while office operations run daily from 08:00 to 20:00 WIB. Asking questions is free.' },
     { q: 'Do I have to send the original document?', a: 'For review and a quote, a clear photo or scan is enough. If the receiving institution has specific rules about originals, tell us so the process can be adjusted.' },
     { q: 'Is the result available digitally?', a: 'Yes. The format, whether digital, printed or both, is agreed up front based on what the recipient asks for.' },
     { q: 'Can I get a printed copy?', a: 'Yes. Pickup or delivery of printed results is discussed together with the quote.' },
@@ -222,7 +222,7 @@ export default {
     identity: [['Brand', 'Englishlink Translator'], ['Company', 'PT. Penerjemah Tersumpah Indonesia'], ['Address', 'Caraka Tower, South Jakarta'], ['Hours', 'Monday–Sunday, 08:00–20:00 WIB']],
   },
 
-  contact: { h1: 'Talk to us', lead: 'Fastest way: WhatsApp. Send a photo of the document so we can review it right away.', waLabel: 'WhatsApp', emailLabel: 'Email', addressLabel: 'Address', hoursLabel: 'Hours', hoursValue: 'Monday–Sunday, 08:00–20:00 WIB', waMsg: 'Hello Englishlink, I would like to ask about a document translation.' },
+  contact: { h1: 'Talk to us', lead: 'Fastest way: WhatsApp. Send a photo of the document so we can review it right away.', waLabel: 'WhatsApp', emailLabel: 'Email', addressLabel: 'Address', hoursLabel: 'Hours', hoursValue: 'Office: Monday–Sunday, 08:00–20:00 WIB. WhatsApp chat: always online', waMsg: 'Hello Englishlink, I would like to ask about a document translation.' },
 
   privacy: {
     h1: 'Privacy policy',

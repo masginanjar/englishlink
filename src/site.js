@@ -60,7 +60,7 @@
     b.parentNode.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     document.querySelectorAll('.posts li').forEach(function (li) { li.hidden = !!k && li.getAttribute('data-k') !== k; });
   });
-  // Popup status admin: jujur mengikuti jam layanan 08.00–20.00 WIB, bukan status palsu
+  // Popup status admin: chat online terus (konfirmasi pemilik), keterangan mengikuti jam operasional kantor 08.00–20.00 WIB
   var popClosed = false;
   try { popClosed = sessionStorage.getItem('el-pop') === '1'; } catch (err) {}
   function showPop() {
@@ -69,7 +69,7 @@
     var h = (new Date().getUTCHours() + 7) % 24;
     var on = h >= 8 && h < 20;
     pop.querySelector('[data-online-text]').textContent = pop.getAttribute(on ? 'data-on' : 'data-off');
-    pop.classList.toggle('is-on', on);
+    pop.classList.add('is-on'); // chat selalu online; yang berubah hanya keterangan jam operasional kantor
     pop.setAttribute('data-ready', '1');
     pop.hidden = false;
   }

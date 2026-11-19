@@ -10,7 +10,7 @@ Dipakai oleh penulis manusia maupun AI yang menulis artikel terjadwal.
 ## Aturan fakta (wajib)
 - Jangan menulis harga, lama pengerjaan pasti, ulasan, jumlah klien, penghargaan, atau garansi.
 - Jangan mengarang aturan hukum, nomor peraturan, atau syarat kedutaan. Hal seperti itu hanya boleh ditulis kalau diambil dari sumber resmi yang ditautkan (lihat aturan info terkini). Kalau tidak yakin, tulis "ikuti syarat resmi dari instansi tujuan".
-- Fakta usaha yang boleh dipakai: brand dari PT. Penerjemah Tersumpah Indonesia; fokus Inggris ⇄ Indonesia; juga membantu apostille dan legalisasi notaris, kedutaan, kementerian; WhatsApp 0851-7413-2344; info@englishlink.co.id; Caraka Tower, Jakarta Selatan; buka Senin–Minggu 08.00–20.00 WIB.
+- Fakta usaha yang boleh dipakai: brand dari PT. Penerjemah Tersumpah Indonesia; fokus Inggris ⇄ Indonesia; juga membantu apostille dan legalisasi notaris, kedutaan, kementerian; WhatsApp 0851-7413-2344; info@englishlink.co.id; Caraka Tower, Jakarta Selatan; operasional kantor Senin–Minggu 08.00–20.00 WIB; chat WhatsApp online terus dan dibalas.
 
 ## Aturan anti-spam (berlaku untuk SEMUA konten)
 Lebih baik tidak terbit hari itu daripada menerbitkan konten tempelan. Kalau tidak ada bahan yang layak, jangan terbitkan apa pun dan laporkan alasannya.

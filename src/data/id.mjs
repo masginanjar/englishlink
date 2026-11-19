@@ -9,7 +9,7 @@ export default {
   ui: {
     nav: { services: 'Layanan', docs: 'Jenis Dokumen', how: 'Cara Kerja', blog: 'Artikel', about: 'Tentang', faq: 'FAQ', contact: 'Kontak' },
     skip: 'Lompat ke konten',
-    online: { hi: 'Hai, ada yang bisa dibantu?', on: 'Admin sedang online sekarang. Chat aja, kami cek dokumenmu.', off: 'Admin sedang offline. Kami buka lagi pukul 08.00 WIB, tinggalkan pesan dulu ya.', close: 'Tutup' },
+    online: { hi: 'Hai, ada yang bisa dibantu?', on: 'Admin sedang online. Chat aja, kami cek dokumenmu.', off: 'Admin tetap online dan chat pasti dibalas. Operasional kantor mulai lagi pukul 08.00 WIB.', close: 'Tutup' },
     area: 'Area layanan', kicker: 'Panduan', allTopics: 'Semua',
     menu: 'Menu',
     waCta: 'Chat WhatsApp',
@@ -196,7 +196,7 @@ export default {
   faq: [
     { q: 'Berapa biaya terjemahan per halaman?', a: 'Tergantung jenis dokumen, jumlah halaman, dan seberapa cepat kamu butuh. Biar tidak nebak-nebak, kirim foto dokumennya dulu. Kami kasih estimasi sebelum ada yang dikerjakan.' },
     { q: 'Berapa lama proses pengerjaannya?', a: 'Tergantung jumlah halaman dan jenis dokumennya. Estimasi waktu kami kirim bareng estimasi biaya. Kalau kamu punya deadline, bilang dari awal ya.' },
-    { q: 'Bisa konsultasi dulu sebelum kirim dokumen?', a: 'Bisa banget. Chat kami di WhatsApp tiap hari pukul 08.00–20.00 WIB. Tanya-tanya dulu tidak dikenakan biaya.' },
+    { q: 'Bisa konsultasi dulu sebelum kirim dokumen?', a: 'Bisa banget. Chat WhatsApp kami online terus dan pasti dibalas, sedangkan operasional kantor berjalan tiap hari pukul 08.00–20.00 WIB. Tanya-tanya dulu tidak dikenakan biaya.' },
     { q: 'Apakah dokumen harus dikirim dalam bentuk asli?', a: 'Buat dicek dan dihitung estimasinya, foto atau scan yang jelas sudah cukup. Kalau instansi tujuanmu punya aturan khusus soal dokumen asli, ceritakan ke kami supaya prosesnya disesuaikan.' },
     { q: 'Apakah hasilnya tersedia dalam bentuk digital?', a: 'Bisa. Format hasil, entah digital, cetak, atau keduanya, disepakati di awal mengikuti permintaan instansi tujuan.' },
     { q: 'Bisakah saya minta hasil cetak?', a: 'Bisa. Cara pengambilan atau pengiriman hasil cetak dibahas bareng saat estimasi.' },
@@ -225,7 +225,7 @@ export default {
     identity: [['Brand', 'Englishlink Translator'], ['Badan usaha', 'PT. Penerjemah Tersumpah Indonesia'], ['Alamat', 'Caraka Tower, Jakarta Selatan'], ['Jam layanan', 'Senin–Minggu, 08.00–20.00 WIB']],
   },
 
-  contact: { h1: 'Ngobrol sama kami', lead: 'Cara tercepat: WhatsApp. Kirim foto dokumennya sekalian biar langsung dicek.', waLabel: 'WhatsApp', emailLabel: 'Email', addressLabel: 'Alamat', hoursLabel: 'Jam layanan', hoursValue: 'Senin–Minggu, 08.00–20.00 WIB', waMsg: 'Halo Englishlink, saya mau konsultasi terjemahan dokumen.' },
+  contact: { h1: 'Ngobrol sama kami', lead: 'Cara tercepat: WhatsApp. Kirim foto dokumennya sekalian biar langsung dicek.', waLabel: 'WhatsApp', emailLabel: 'Email', addressLabel: 'Alamat', hoursLabel: 'Jam layanan', hoursValue: 'Kantor: Senin–Minggu, 08.00–20.00 WIB. Chat WhatsApp: online terus', waMsg: 'Halo Englishlink, saya mau konsultasi terjemahan dokumen.' },
 
   privacy: {
     h1: 'Kebijakan privasi',
