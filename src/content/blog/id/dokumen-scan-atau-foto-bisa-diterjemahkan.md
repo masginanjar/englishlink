@@ -3,6 +3,8 @@ title: Apakah Dokumen Scan atau Foto Bisa Diterjemahkan?
 description: Bisa. Foto atau scan yang jelas cukup untuk dicek dan diterjemahkan. Ini syarat foto dokumen yang baik dan hal yang perlu ditanyakan ke instansi tujuan.
 date: 2026-11-20
 keywords: penerjemah tersumpah online, terjemahan dokumen scan, translate dokumen dari foto
+kicker: Tanya jawab
+coverText: Scan atau foto, bisa diterjemahkan?
 cover: svc-6
 answer: Bisa. Dokumen dalam bentuk foto, scan, atau PDF bisa dicek dan diterjemahkan selama semua halaman lengkap, terang, tidak blur, dan tidak terpotong. Yang perlu dipastikan adalah apakah instansi tujuan punya aturan khusus soal dokumen asli.
 ---

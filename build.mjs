@@ -58,6 +58,9 @@ const photoAttr = (n) => (HERO[n] ? ` has-photo${HERO[n].light ? ' on-light' : '
 const BLANK = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 const coverImg = (name, alt = '', cls = 'cover') => `<img class="${cls}" ${PREVIEW ? `src="${BLANK}" data-img="${name}"` : `src="/assets/img/covers/${name}.webp"`} alt="${esc(alt)}" width="800" height="450" loading="lazy">`;
 const DEFAULT_COVER = 'periksa';
+const DOC_COVERS = ['stempel', 'ijazah', 'svc-5', 'svc-2', 'svc-4', 'timbangan', 'periksa'];
+// Cover bertulisan: panel warna + judul singkat + ilustrasi. Dipakai artikel dan halaman kota.
+const textCover = (key, kicker, text, img) => { let h = 0; for (const ch of key) h = (h * 31 + ch.charCodeAt(0)) % 997; return `<div class="tcover tc${h % 4}"><div class="tc-text"><span class="tc-kicker">${esc(kicker)}</span><strong>${esc(text)}</strong><span class="tc-brand">englishlink.co.id</span></div>${coverImg(img, '', 'tc-img')}</div>`; };
 
 // ---------- Artikel ----------
 function parsePost(file, lang) {
@@ -116,7 +119,7 @@ function quoteForm(L) {
   </form></div></section>`;
 }
 const ctaBand = (L) => `<section class="sec"><div class="wrap"><div class="band"><div><h2>${esc(L.ui.ctaBand.title)}</h2><p>${esc(L.ui.ctaBand.text)}</p></div>${btnWa(L.ui.waCta, L.ui.form.fallback, 'btn btn-white')}</div></div></section>`;
-const postCards = (L, posts) => `<ul class="posts">${posts.map((p) => `<li><a class="post-card" href="${L.paths.blog}${p.slug}/">${coverImg(p.cover)}<time datetime="${p.date}">${fmtDate(p.date, L.lang)}</time><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><span class="more">${esc(L.ui.readMore)} ${arrow}</span></a></li>`).join('')}</ul>`;
+const postCards = (L, posts) => `<ul class="posts">${posts.map((p) => `<li><a class="post-card" href="${L.paths.blog}${p.slug}/">${textCover(p.slug, p.kicker || L.ui.kicker, p.coverText || p.title, p.cover)}<time datetime="${p.date}">${fmtDate(p.date, L.lang)}</time><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><span class="more">${esc(L.ui.readMore)} ${arrow}</span></a></li>`).join('')}</ul>`;
 
 // ---------- Schema ----------
 const orgSchema = (L) => ({
@@ -142,7 +145,7 @@ for (const L of Object.values(LANGS)) {
   const svcHref = (i) => `${P.services}${L.services[i].slug}/`;
   const docHref = (i) => `${P.docs}${L.docTypes[i].slug}/`;
   const svcCard = (i) => ({ href: svcHref(i), title: L.services[i].title, text: L.services[i].short, icon: SVC_ICONS[i], cover: `svc-${i}` });
-  const docCard = (i) => ({ href: docHref(i), title: L.docTypes[i].title, text: L.docTypes[i].short, icon: DOC_ICONS[i] });
+  const docCard = (i) => ({ href: docHref(i), title: L.docTypes[i].title, text: L.docTypes[i].short, icon: DOC_ICONS[i], cover: DOC_COVERS[i] });
 
   // Beranda
   const H = L.home;
@@ -160,7 +163,7 @@ for (const L of Object.values(LANGS)) {
 <section class="trust"><div class="wrap trust-in"><p>${esc(H.trustLabel)}</p><ul>${[['clock', U.hours], ['pin', U.address], ['phone', H.facts[2]], ['swap', H.facts[1]]].map(([i, t]) => `<li>${ico(i)}<span>${esc(t)}</span></li>`).join('')}</ul></div></section>
 <section class="sec"><div class="wrap">${sectionHead(H.servicesTitle, H.servicesLead)}${cards(L, L.services.map((s, i) => svcCard(i)), 'four')}</div></section>
 <section class="sec"><div class="wrap"><div class="extra"><div><h3>${esc(H.extraTitle)}</h3><p>${esc(H.extraText)}</p></div>${btnWa(U.waCta, H.extraWa, 'btn btn-amber')}</div></div></section>
-<section class="sec sec-soft"><div class="wrap">${sectionHead(H.whyTitle, H.whyLead)}<ul class="why">${H.why.map((w, n) => `<li><span class="ico">${ico(['swap', 'check', 'clock', 'phone'][n])}</span><h3>${esc(w.t)}</h3><p>${esc(w.d)}</p></li>`).join('')}</ul></div></section>
+<section class="sec sec-soft"><div class="wrap">${sectionHead(H.whyTitle, H.whyLead)}<div class="why-grid"><div class="why-photo">${coverImg('orang-2', H.photoAlt[1], 'photo')}<span class="chip c0">${ico('check')}${esc(H.why[1].t)}</span><span class="chip c2">${ico('clock')}${esc(H.why[2].t)}</span></div><ul class="why">${H.why.map((w, n) => `<li><span class="ico">${ico(['swap', 'check', 'clock', 'phone'][n])}</span><h3>${esc(w.t)}</h3><p>${esc(w.d)}</p></li>`).join('')}</ul></div></div></section>
 <section class="sec"><div class="wrap">${sectionHead(H.stepsTitle, H.stepsLead)}${stepsList(L.steps)}</div></section>
 <section class="sec sec-soft"><div class="wrap">${sectionHead(H.docsTitle, H.docsLead)}${cards(L, L.docTypes.map((d, i) => docCard(i)), 'four')}</div></section>
 ${posts.length ? `<section class="sec"><div class="wrap">${sectionHead(H.blogTitle, '', { href: P.blog, label: U.seeAll })}${postCards(L, posts.slice(0, 3))}</div></section>` : ''}
@@ -194,7 +197,7 @@ ${quoteForm(L)}` });
   L.docTypes.forEach((d, i) => {
     const c = [...crumbs, { label: d.title, href: docHref(i) }];
     add({ lang, key: `doc:${i}`, path: docHref(i), title: lang === 'id' ? `Terjemahan ${d.title} | Englishlink` : `${d.title} | Englishlink`, desc: d.lead.slice(0, 158), schema: [crumbSchema(c)],
-      body: `${pageHero(L, c, d.title, d.lead, `<div class="actions">${btnWa(U.waCta, `${U.form.fallback} (${d.title})`)}</div>`)}
+      body: `${pageHero(L, c, d.title, d.lead, `<div class="actions">${btnWa(U.waCta, `${U.form.fallback} (${d.title})`)}</div>`, DOC_COVERS[i])}
 <section class="sec"><div class="wrap two">
   <div><h2>${esc(U.includes)}</h2>${ticks(d.items)}</div>
   <div><h2>${esc(U.checkBefore)}</h2>${ticks(d.tips)}<p class="req">${esc(U.reqNote)}</p></div>
@@ -209,14 +212,14 @@ ${quoteForm(L)}` });
   add({ lang, key: 'how', path: P.how, ...L.meta.how, schema: [crumbSchema(crumbs), { '@context': 'https://schema.org', '@type': 'HowTo', name: L.howPage.h1, step: L.steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.t, text: s.d })) }],
     body: `${pageHero(L, crumbs, L.howPage.h1, L.howPage.lead)}
 <section class="sec"><div class="wrap">${stepsList(L.steps)}</div></section>
-<section class="sec sec-tint"><div class="wrap two"><div><h2>${esc(L.prepareTitle)}</h2>${ticks(L.prepare)}</div><div class="note"><h3>${esc(U.sendTitle)}</h3><p>${esc(U.sendText)}</p></div></div></section>${quoteForm(L)}` });
+<section class="sec sec-tint"><div class="wrap two"><div><h2>${esc(L.prepareTitle)}</h2>${ticks(L.prepare)}</div><div>${coverImg('orang-3', L.home.photoAlt[2], 'photo wide')}<div class="note"><h3>${esc(U.sendTitle)}</h3><p>${esc(U.sendText)}</p></div></div></div></section>${quoteForm(L)}` });
 
   // Tentang
   crumbs = [homeCrumb, { label: U.nav.about, href: P.about }];
   const A = L.about;
   add({ lang, key: 'about', path: P.about, ...L.meta.about, schema: [crumbSchema(crumbs), orgSchema(L)], body: `${pageHero(L, crumbs, A.h1, A.lead)}
 <section class="sec"><div class="wrap two"><div class="prose">${A.body.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
-<div class="idcard"><h2>${esc(A.identityTitle)}</h2><dl>${A.identity.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl></div></div></section>
+<div>${coverImg('orang-1', L.home.photoAlt[0], 'photo wide')}<div class="idcard"><h2>${esc(A.identityTitle)}</h2><dl>${A.identity.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl></div></div></div></section>
 <section class="sec sec-tint"><div class="wrap">${sectionHead(A.standardsTitle)}${points(A.standards)}</div></section>
 <section class="sec"><div class="wrap narrow"><h2>${esc(A.privacyTitle)}</h2><p>${esc(A.privacyText)} <a href="${P.privacy}">${esc(U.privacy)}</a>.</p></div></section>${ctaBand(L)}` });
 
@@ -240,6 +243,32 @@ ${quoteForm(L)}` });
   add({ lang, key: 'privacy', path: P.privacy, ...L.meta.privacy, schema: [crumbSchema(crumbs)], body: `${pageHero(L, crumbs, L.privacy.h1, L.privacy.lead)}
 <section class="sec"><div class="wrap narrow prose">${L.privacy.sections.map((s) => `<h2>${esc(s.t)}</h2><p>${esc(s.d)}</p>`).join('')}</div></section>` });
 
+  // Area layanan (halaman per kota/kabupaten)
+  if (P.area) {
+    const dir = path.join(ROOT, 'src/content/kota');
+    const cities = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.md')).map((f) => parsePost(path.join(dir, f), lang)).sort((a, b) => (a.city || a.slug).localeCompare(b.city || b.slug)) : [];
+    L._cities = cities;
+    crumbs = [homeCrumb, { label: U.area, href: P.area }];
+    const cityChips = (skip) => `<ul class="chips">${cities.filter((c) => c.slug !== skip).map((c) => `<li><a href="${P.area}${c.slug}/">${esc(c.city || c.title)} ${arrow}</a></li>`).join('')}</ul>`;
+    add({ lang, key: 'area', path: P.area, ...L.meta.area, schema: [crumbSchema(crumbs)], body: `${pageHero(L, crumbs, L.areaPage.h1, L.areaPage.lead, `<div class="actions">${btnWa(U.waCta, U.form.fallback)}</div>`, 'svc-1')}
+<section class="sec"><div class="wrap">${sectionHead(L.areaPage.listTitle)}${cityChips('')}<p class="req">${esc(L.areaPage.note)}</p></div></section>${quoteForm(L)}` });
+    for (const c of cities) {
+      const href = `${P.area}${c.slug}/`;
+      const cr = [...crumbs, { label: c.city || c.title, href }];
+      const schema = [crumbSchema(cr), { '@context': 'https://schema.org', '@type': 'Service', name: c.title, description: c.description, serviceType: 'Sworn translation', provider: { '@id': `${SITE}/#org` }, areaServed: { '@type': 'City', name: c.city || c.title }, url: SITE + href }];
+      if (c.faq.length) schema.push(faqSchema(c.faq));
+      add({ lang, key: `city:${c.slug}`, path: href, title: c.title.length > 50 ? c.title : `${c.title} | Englishlink`, desc: c.description, schema, body: `<article class="post"><div class="wrap narrow">${crumbsHtml(cr)}
+<h1>${esc(c.title)}</h1>
+<p class="post-meta">${esc(U.by)} <a href="${P.about}">${esc(U.author)}</a> · ${esc(U.updated)} <time datetime="${c.updated}">${fmtDate(c.updated, lang)}</time></p>
+<figure class="cover-fig">${textCover(c.slug, U.area, `${L.areaPage.coverPrefix} ${c.city || ''}`, c.cover)}</figure>
+<div class="answer"><strong>${esc(U.shortAnswer)}</strong><p>${esc(c.answer)}</p></div>
+<div class="prose">${c.html}</div>
+<div class="band small"><div><h2>${esc(U.ctaBand.title)}</h2><p>${esc(U.ctaBand.text)}</p></div>${btnWa(U.waCta, `${U.form.fallback} (${c.city || ''})`, 'btn btn-white')}</div>
+</div></article>
+<section class="sec sec-tint"><div class="wrap">${sectionHead(L.areaPage.otherTitle, '', { href: P.area, label: U.seeAll })}${cityChips(c.slug)}</div></section>` });
+    }
+  }
+
   // Artikel
   if (P.blog) {
     crumbs = [homeCrumb, { label: U.nav.blog, href: P.blog }];
@@ -254,7 +283,7 @@ ${quoteForm(L)}` });
       add({ lang, key: `post:${p.slug}`, path: href, title: p.title.length > 50 ? p.title : `${p.title} | Englishlink`, desc: p.description, ogType: 'article', ogImage: `${SITE}/assets/img/covers/${p.cover}.webp`, schema, body: `<article class="post"><div class="wrap narrow">${crumbsHtml(c)}
 <h1>${esc(p.title)}</h1>
 <p class="post-meta">${esc(U.by)} <a href="${P.about}">${esc(U.author)}</a> · ${esc(U.published)} <time datetime="${p.date}">${fmtDate(p.date, lang)}</time>${p.updated !== p.date ? ` · ${esc(U.updated)} <time datetime="${p.updated}">${fmtDate(p.updated, lang)}</time>` : ''} · ${p.minutes} ${esc(U.minRead)}</p>
-<figure class="cover-fig">${coverImg(p.cover, p.title)}</figure>
+<figure class="cover-fig">${textCover(p.slug, p.kicker || U.kicker, p.coverText || p.title, p.cover)}</figure>
 <div class="answer"><strong>${esc(U.shortAnswer)}</strong><p>${esc(p.answer)}</p></div>
 <div class="prose">${p.html}</div>
 <div class="band small"><div><h2>${esc(U.ctaBand.title)}</h2><p>${esc(U.ctaBand.text)}</p></div>${btnWa(U.waCta, U.form.fallback, 'btn btn-white')}</div>
@@ -271,7 +300,10 @@ function chrome(page) {
   const alt = altOf(page) || pages.find((p) => p.key === 'home' && p.lang !== page.lang);
   const navItems = ['services', 'docs', 'how', 'blog', 'about', 'faq'].filter((k) => P[k]);
   const cur = (k) => (page.path.startsWith(P[k]) ? ' aria-current="page"' : '');
-  const nav = navItems.map((k) => `<li><a href="${P[k]}"${cur(k)}>${esc(U.nav[k])}</a></li>`).join('');
+  const chev = '<svg class="chev" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const mega = (k, items) => `<li class="has-mega"><details><summary${cur(k)}>${esc(U.nav[k])}${chev}</summary><div class="mega"><ul>${items.map((it, n) => `<li><a href="${it.href}"><span class="mi t${n % 4}">${ico(it.icon)}</span><span><b>${esc(it.title)}</b><small>${esc(it.text)}</small></span></a></li>`).join('')}</ul><a class="more" href="${P[k]}">${esc(U.seeAll)} ${arrow}</a></div></details></li>`;
+  const megaItems = { services: L.services.map((x, n) => ({ href: `${P.services}${x.slug}/`, title: x.title, text: x.short, icon: SVC_ICONS[n] })), docs: L.docTypes.map((x, n) => ({ href: `${P.docs}${x.slug}/`, title: x.title, text: x.short, icon: DOC_ICONS[n] })) };
+  const nav = navItems.map((k) => (megaItems[k] ? mega(k, megaItems[k]) : `<li><a href="${P[k]}"${cur(k)}>${esc(U.nav[k])}</a></li>`)).join('');
   const header = `<a class="skip" href="#main">${esc(U.skip)}</a>
 <header class="site-header"><div class="wrap bar">
   <a class="logo" href="${P.home}" aria-label="Englishlink Translator"><span class="logo-mark">E<span>⇄</span></span><span class="logo-text">english<b>link</b></span></a>
@@ -281,7 +313,7 @@ function chrome(page) {
 </div></header>`;
   const footer = `<footer class="site-footer"><div class="wrap foot">
   <div><a class="logo on-dark" href="${P.home}"><span class="logo-mark">E<span>⇄</span></span><span class="logo-text">english<b>link</b></span></a><p>${esc(U.footerTag)}</p></div>
-  <div><h2>${esc(U.footerExplore)}</h2><ul>${navItems.map((k) => `<li><a href="${P[k]}">${esc(U.nav[k])}</a></li>`).join('')}<li><a href="${P.privacy}">${esc(U.privacy)}</a></li></ul></div>
+  <div><h2>${esc(U.footerExplore)}</h2><ul>${navItems.map((k) => `<li><a href="${P[k]}">${esc(U.nav[k])}</a></li>`).join('')}${P.area ? `<li><a href="${P.area}">${esc(U.area)}</a></li>` : ''}<li><a href="${P.privacy}">${esc(U.privacy)}</a></li></ul></div>
   <div><h2>${esc(U.footerContact)}</h2><ul><li><a href="${wa(U.form.fallback)}" rel="noopener">WhatsApp ${WA_DISPLAY[page.lang]}</a></li><li><a href="mailto:${EMAIL}">${EMAIL}</a></li><li>${esc(U.address)}</li><li>${esc(U.hours)}</li></ul></div>
 </div><div class="wrap copy">© ${new Date().getFullYear()} Englishlink Translator · PT. Penerjemah Tersumpah Indonesia</div></footer>
 <a class="wa-float" href="${wa(U.form.fallback)}" rel="noopener">${waIcon}<span>${esc(U.waCta)}</span></a>`;
@@ -349,7 +381,7 @@ ${js}</script></body></html>`);
   write('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((p) => `<url><loc>${SITE}${p.path}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>\n`);
   write('dist/robots.txt', `User-agent: *\nAllow: /\n\n# Mesin AI dipersilakan membaca dan merujuk situs ini\nUser-agent: GPTBot\nAllow: /\nUser-agent: OAI-SearchBot\nAllow: /\nUser-agent: ClaudeBot\nAllow: /\nUser-agent: PerplexityBot\nAllow: /\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
   const idL = LANGS.id;
-  write('dist/llms.txt', `# Englishlink Translator\n\n> Jasa penerjemah tersumpah Inggris ⇄ Indonesia, brand dari PT. Penerjemah Tersumpah Indonesia. Caraka Tower, Jakarta Selatan. Buka Senin–Minggu 08.00–20.00 WIB. WhatsApp ${WA_DISPLAY.en}, email ${EMAIL}. Juga membantu apostille serta legalisasi notaris, kedutaan, dan kementerian.\n\n## Layanan\n${idL.services.map((s, i) => `- [${s.title}](${SITE}${idL.paths.services}${s.slug}/): ${s.short}`).join('\n')}\n\n## Jenis dokumen\n${idL.docTypes.map((d) => `- [${d.title}](${SITE}${idL.paths.docs}${d.slug}/): ${d.short}`).join('\n')}\n\n## Artikel\n${idL._posts.map((p) => `- [${p.title}](${SITE}${idL.paths.blog}${p.slug}/): ${p.description}`).join('\n')}\n\n## Info\n- [Cara kerja](${SITE}${idL.paths.how})\n- [FAQ](${SITE}${idL.paths.faq})\n- [Tentang](${SITE}${idL.paths.about})\n- [English version](${SITE}/en/)\n`);
+  write('dist/llms.txt', `# Englishlink Translator\n\n> Jasa penerjemah tersumpah Inggris ⇄ Indonesia, brand dari PT. Penerjemah Tersumpah Indonesia. Caraka Tower, Jakarta Selatan. Buka Senin–Minggu 08.00–20.00 WIB. WhatsApp ${WA_DISPLAY.en}, email ${EMAIL}. Juga membantu apostille serta legalisasi notaris, kedutaan, dan kementerian.\n\n## Layanan\n${idL.services.map((s, i) => `- [${s.title}](${SITE}${idL.paths.services}${s.slug}/): ${s.short}`).join('\n')}\n\n## Jenis dokumen\n${idL.docTypes.map((d) => `- [${d.title}](${SITE}${idL.paths.docs}${d.slug}/): ${d.short}`).join('\n')}\n\n## Artikel\n${idL._posts.map((p) => `- [${p.title}](${SITE}${idL.paths.blog}${p.slug}/): ${p.description}`).join('\n')}${idL._cities && idL._cities.length ? `\n\n## Area layanan\n${idL._cities.map((c) => `- [${c.title}](${SITE}${idL.paths.area}${c.slug}/): ${c.description}`).join('\n')}` : ''}\n\n## Info\n- [Cara kerja](${SITE}${idL.paths.how})\n- [FAQ](${SITE}${idL.paths.faq})\n- [Tentang](${SITE}${idL.paths.about})\n- [English version](${SITE}/en/)\n`);
   if (fs.existsSync(path.join(ROOT, 'CNAME'))) fs.copyFileSync(path.join(ROOT, 'CNAME'), path.join(ROOT, 'dist/CNAME'));
   console.log(`Build: ${pages.length} halaman -> dist/`);
 }

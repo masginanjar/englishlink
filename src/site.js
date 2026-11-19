@@ -10,8 +10,16 @@
     }
     if (e.target.closest && e.target.closest('.nav a')) document.body.classList.remove('nav-open');
   });
+  // Menu dropdown: satu terbuka dalam satu waktu, tutup saat klik di luar
+  document.addEventListener('click', function (e) {
+    var sum = e.target.closest && e.target.closest('.has-mega summary');
+    document.querySelectorAll('.has-mega details[open]').forEach(function (d) {
+      if (!sum || d !== sum.parentNode) { if (!d.contains(e.target) || e.target.closest('a')) d.removeAttribute('open'); }
+    });
+  });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
+      document.querySelectorAll('.has-mega details[open]').forEach(function (d) { d.removeAttribute('open'); });
       document.body.classList.remove('nav-open');
       var b = document.querySelector('[data-menu]');
       if (b) b.setAttribute('aria-expanded', 'false');

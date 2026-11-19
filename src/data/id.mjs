@@ -4,11 +4,12 @@ export default {
   locale: 'id_ID',
   paths: {
     home: '/id/', services: '/id/layanan/', docs: '/id/dokumen/', how: '/id/cara-kerja/',
-    blog: '/id/artikel/', about: '/id/tentang/', faq: '/id/faq/', contact: '/id/kontak/', privacy: '/id/privasi/',
+    blog: '/id/artikel/', about: '/id/tentang/', faq: '/id/faq/', contact: '/id/kontak/', privacy: '/id/privasi/', area: '/id/penerjemah-tersumpah/',
   },
   ui: {
     nav: { services: 'Layanan', docs: 'Jenis Dokumen', how: 'Cara Kerja', blog: 'Artikel', about: 'Tentang', faq: 'FAQ', contact: 'Kontak' },
     skip: 'Lompat ke konten',
+    area: 'Area layanan', kicker: 'Panduan',
     menu: 'Menu',
     waCta: 'Chat WhatsApp',
     estimateCta: 'Minta estimasi biaya',
@@ -50,6 +51,7 @@ export default {
     about: { title: 'Tentang Englishlink | PT. Penerjemah Tersumpah Indonesia', desc: 'Englishlink Translator adalah brand penerjemahan Inggris–Indonesia dari PT. Penerjemah Tersumpah Indonesia di Caraka Tower, Jakarta Selatan.' },
     faq: { title: 'FAQ Terjemahan Tersumpah: Biaya, Waktu, Hasil | Englishlink', desc: 'Jawaban singkat soal biaya per halaman, lama pengerjaan, dokumen asli, hasil digital dan cetak, revisi, serta kerahasiaan dokumen.' },
     contact: { title: 'Kontak Englishlink Translator | WhatsApp 0851-7413-2344', desc: 'Hubungi Englishlink via WhatsApp 0851-7413-2344 atau info@englishlink.co.id. Caraka Tower, Jakarta Selatan. Buka tiap hari 08.00–20.00 WIB.' },
+    area: { title: 'Area Layanan Penerjemah Tersumpah Inggris | Englishlink', desc: 'Englishlink melayani terjemahan tersumpah Inggris–Indonesia secara online untuk berbagai kota dan kabupaten di Indonesia, dari kantor di Jakarta Selatan.' },
     privacy: { title: 'Kebijakan Privasi | Englishlink Translator', desc: 'Cara Englishlink memperlakukan data dan dokumenmu: formulir tidak disimpan di server, percakapan berlangsung di WhatsApp.' },
   },
 
@@ -234,5 +236,6 @@ export default {
       { t: 'Punya pertanyaan?', d: 'Hubungi kami di info@englishlink.co.id atau WhatsApp 0851-7413-2344.' },
     ],
   },
+  areaPage: { h1: 'Penerjemah tersumpah Inggris untuk kotamu', lead: 'Kantor kami di Caraka Tower, Jakarta Selatan. Tapi kamu tidak perlu datang: dokumen dikirim lewat WhatsApp, dan hasilnya bisa digital atau dikirim ke alamatmu.', listTitle: 'Pilih *kota atau kabupaten*', otherTitle: 'Kota dan kabupaten lain', coverPrefix: 'Penerjemah Tersumpah Inggris', note: 'Catatan: Englishlink tidak punya kantor cabang di tiap kota. Semua pesanan dikerjakan dari Jakarta Selatan dan dilayani secara online.' },
   blogPage: { h1: 'Artikel & panduan', lead: 'Penjelasan singkat, langsung ke intinya. Biar kamu paham dulu sebelum urus dokumen.' },
 };

@@ -3,6 +3,8 @@ title: Tips Cek Nama, Tanggal, dan Nomor di Hasil Terjemahan
 description: Tiga hal yang paling sering bikin dokumen ditolak adalah nama, tanggal, dan nomor. Ini cara mengeceknya dalam lima menit sebelum dokumen diserahkan.
 date: 2026-11-20
 keywords: cek hasil terjemahan, ejaan nama dokumen, terjemahan akta kelahiran bahasa Inggris
+kicker: Tips
+coverText: Cek 3 hal ini di hasil terjemahan
 cover: periksa
 answer: Sebelum menyerahkan hasil terjemahan, cocokkan tiga hal dengan dokumen asli dan paspor, yaitu ejaan nama, format tanggal, dan semua nomor dokumen. Kalau ada yang beda, langsung minta diperiksa ulang.
 ---

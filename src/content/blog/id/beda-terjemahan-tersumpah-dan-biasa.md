@@ -3,6 +3,8 @@ title: Terjemahan Tersumpah vs Terjemahan Biasa, Bedanya Apa?
 description: Bedanya ada di siapa yang menerjemahkan dan untuk apa hasilnya dipakai. Terjemahan tersumpah untuk urusan resmi, terjemahan biasa untuk kebutuhan umum.
 date: 2026-11-20
 keywords: perbedaan terjemahan tersumpah dan biasa, terjemahan tersumpah, jasa translate tersumpah
+kicker: Perbandingan
+coverText: Tersumpah vs biasa: bedanya apa?
 cover: timbangan
 answer: Terjemahan tersumpah dibuat oleh penerjemah yang sudah diangkat dan disumpah, dilengkapi pernyataan, tanda tangan, dan cap, sehingga dipakai untuk urusan resmi. Terjemahan biasa bisa dibuat siapa saja yang mampu dan cocok untuk kebutuhan non-resmi.
 ---

@@ -9,6 +9,7 @@ export default {
   ui: {
     nav: { services: 'Services', docs: 'Documents', how: 'How It Works', blog: 'Articles', about: 'About', faq: 'FAQ', contact: 'Contact' },
     skip: 'Skip to content',
+    area: 'Service areas', kicker: 'Guide',
     menu: 'Menu',
     waCta: 'Chat on WhatsApp',
     estimateCta: 'Get a quote',

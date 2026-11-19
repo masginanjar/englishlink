@@ -3,6 +3,8 @@ title: Apa Itu Penerjemah Tersumpah dan Kapan Kamu Butuh?
 description: Penerjemah tersumpah adalah penerjemah yang sudah diangkat dan disumpah, jadi terjemahannya bisa dipakai untuk urusan resmi. Ini kapan kamu butuh.
 date: 2026-11-20
 keywords: penerjemah tersumpah, penerjemah tersumpah bahasa Inggris, sworn translator
+kicker: Dasar
+coverText: Apa itu penerjemah tersumpah?
 cover: stempel
 answer: Penerjemah tersumpah adalah penerjemah yang telah diangkat dan disumpah oleh negara, sehingga terjemahannya diakui untuk keperluan resmi. Kamu membutuhkannya saat instansi, kampus, atau kedutaan mensyaratkan "sworn translation" atau "terjemahan tersumpah" untuk dokumenmu.
 ---

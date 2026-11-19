@@ -21,6 +21,8 @@ title: Judul maksimal 60 karakter, mengandung kata kunci
 description: 120–155 karakter, menjawab inti pertanyaan
 date: YYYY-MM-DD
 keywords: kata kunci utama, kata kunci kedua, kata kunci ketiga
+kicker: Satu kata label, misalnya Panduan, Tips, Dasar, Perbandingan, Tanya jawab
+coverText: Judul singkat untuk gambar cover, maksimal 6 kata, harus bisa dipahami tanpa membuka artikel
 cover: nama-gambar (pilih dari daftar cover di bawah)
 answer: Jawaban langsung 2–3 kalimat. Ini yang paling mungkin dikutip Google dan AI.
 ---

@@ -3,6 +3,8 @@ title: Panduan Terjemahan Ijazah dan Transkrip ke Bahasa Inggris
 description: Langkah menerjemahkan ijazah dan transkrip untuk kuliah, beasiswa, atau kerja di luar negeri, lengkap dengan hal yang wajib dicek sebelum kirim.
 date: 2026-11-20
 keywords: jasa terjemahan ijazah bahasa Inggris, terjemahan transkrip nilai, translate ijazah tersumpah
+kicker: Panduan
+coverText: Cara translate ijazah & transkrip
 cover: ijazah
 answer: Untuk menerjemahkan ijazah dan transkrip, foto halaman depan dan belakang dengan jelas, cek syarat dari kampus atau pemberi beasiswa, lalu kirim ke penerjemah tersumpah. Pastikan ejaan nama sama dengan paspor dan sebutkan deadline pendaftaranmu.
 ---

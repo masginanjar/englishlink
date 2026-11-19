@@ -1,0 +1,88 @@
+# Antrean halaman kota (1 per hari)
+
+Tanda: `[x]` sudah terbit, `[-]` dilewati (beri alasan singkat).
+
+## Sudah terbit
+- [x] Jakarta Selatan
+
+## Berikutnya
+- [ ] Jakarta Pusat
+- [ ] Jakarta Barat
+- [ ] Jakarta Timur
+- [ ] Jakarta Utara
+- [ ] Kota Surabaya
+- [ ] Kota Bandung
+- [ ] Kota Medan
+- [ ] Kota Bekasi
+- [ ] Kota Tangerang
+- [ ] Kota Depok
+- [ ] Kota Semarang
+- [ ] Kota Palembang
+- [ ] Kota Makassar
+- [ ] Kota Tangerang Selatan
+- [ ] Kota Bogor
+- [ ] Kota Batam
+- [ ] Kota Yogyakarta
+- [ ] Kota Denpasar
+- [ ] Kota Malang
+- [ ] Kota Balikpapan
+- [ ] Kota Pekanbaru
+- [ ] Kota Bandar Lampung
+- [ ] Kota Padang
+- [ ] Kota Samarinda
+- [ ] Kota Banjarmasin
+- [ ] Kota Pontianak
+- [ ] Kota Manado
+- [ ] Kota Surakarta
+- [ ] Kabupaten Sleman
+- [ ] Kabupaten Badung
+- [ ] Kabupaten Bekasi
+- [ ] Kabupaten Tangerang
+- [ ] Kabupaten Bogor
+- [ ] Kabupaten Bandung
+- [ ] Kabupaten Sidoarjo
+- [ ] Kabupaten Karawang
+- [ ] Kota Cimahi
+- [ ] Kota Cilegon
+- [ ] Kota Serang
+- [ ] Kota Cirebon
+- [ ] Kota Tasikmalaya
+- [ ] Kota Sukabumi
+- [ ] Kabupaten Gresik
+- [ ] Kabupaten Gianyar
+- [ ] Kota Mataram
+- [ ] Kota Kupang
+- [ ] Kota Jayapura
+- [ ] Kota Ambon
+- [ ] Kota Kendari
+- [ ] Kota Palu
+- [ ] Kota Gorontalo
+- [ ] Kota Jambi
+- [ ] Kota Bengkulu
+- [ ] Kota Banda Aceh
+- [ ] Kota Pangkalpinang
+- [ ] Kota Tanjungpinang
+- [ ] Kota Palangka Raya
+- [ ] Kota Tarakan
+- [ ] Kota Ternate
+- [ ] Kota Sorong
+- [ ] Kota Pematangsiantar
+- [ ] Kota Binjai
+- [ ] Kota Dumai
+- [ ] Kota Lubuklinggau
+- [ ] Kota Metro
+- [ ] Kota Tegal
+- [ ] Kota Pekalongan
+- [ ] Kota Magelang
+- [ ] Kota Salatiga
+- [ ] Kota Kediri
+- [ ] Kota Madiun
+- [ ] Kota Batu
+- [ ] Kota Probolinggo
+- [ ] Kota Banjarbaru
+- [ ] Kota Bontang
+- [ ] Kota Singkawang
+- [ ] Kabupaten Banyumas
+- [ ] Kabupaten Jember
+- [ ] Kabupaten Banyuwangi
+- [ ] Kabupaten Cianjur
