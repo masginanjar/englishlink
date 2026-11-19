@@ -9,8 +9,27 @@ Dipakai oleh penulis manusia maupun AI yang menulis artikel terjadwal.
 
 ## Aturan fakta (wajib)
 - Jangan menulis harga, lama pengerjaan pasti, ulasan, jumlah klien, penghargaan, atau garansi.
-- Jangan mengarang aturan hukum, nomor peraturan, atau syarat kedutaan. Kalau tidak yakin, tulis "ikuti syarat resmi dari instansi tujuan".
+- Jangan mengarang aturan hukum, nomor peraturan, atau syarat kedutaan. Hal seperti itu hanya boleh ditulis kalau diambil dari sumber resmi yang ditautkan (lihat aturan info terkini). Kalau tidak yakin, tulis "ikuti syarat resmi dari instansi tujuan".
 - Fakta usaha yang boleh dipakai: brand dari PT. Penerjemah Tersumpah Indonesia; fokus Inggris ⇄ Indonesia; juga membantu apostille dan legalisasi notaris, kedutaan, kementerian; WhatsApp 0851-7413-2344; info@englishlink.co.id; Caraka Tower, Jakarta Selatan; buka Senin–Minggu 08.00–20.00 WIB.
+
+## Dua artikel per hari
+
+| Slot | Isi | `kicker` yang dipakai |
+|---|---|---|
+| Pagi | Info terkini seputar penerjemah tersumpah, dokumen untuk luar negeri, tips urus dokumen, atau beasiswa | Info terkini, Tips, Beasiswa |
+| Sore | Belajar bahasa Inggris: kosakata, grammar, ungkapan, tips TOEFL/IELTS, bahasa Inggris untuk kerja dan kuliah | Belajar Inggris |
+
+### Cara memilih topik (ide yang ramai kemarin)
+1. Cari lewat pencarian web apa yang ramai dibicarakan di Indonesia dalam 1–2 hari terakhir sesuai slotnya. Pagi: pengumuman beasiswa (LPDP dan beasiswa luar negeri lain), aturan visa atau dokumen, apostille, berita kuliah dan kerja di luar negeri. Sore: topik belajar bahasa Inggris yang sedang banyak dicari atau dibahas.
+2. Pilih satu yang benar-benar berguna untuk pembaca Englishlink (pelajar, pencari beasiswa, pekerja, keluarga yang mengurus dokumen) dan belum pernah ditulis di `src/content/blog/id/`.
+3. Kalau tidak ada yang ramai dan bisa dipastikan kebenarannya, ambil topik teratas dari `src/content/topics-queue.md` (pagi) atau tulis materi belajar bahasa Inggris yang selalu dicari (sore).
+4. Jangan ikut topik politik, gosip, SARA, bencana, atau kontroversi. Jangan menyalin tulisan orang lain; tulis ulang dengan sudut pandang sendiri.
+
+### Aturan tambahan untuk info terkini
+- Setiap tanggal, tenggat, syarat, atau angka dari berita harus berasal dari sumber resmi (situs lembaga pemberi beasiswa, kementerian, kedutaan) yang dibuka di sesi itu, dan diberi tautan di bagian `## Sumber` di akhir artikel, sebelum `## FAQ`.
+- Tulis "per <tanggal hari ini>" untuk informasi yang bisa berubah, dan ajak pembaca mengecek halaman resminya.
+- Kalau sumber resminya tidak ketemu atau saling bertentangan, jangan tulis topik itu.
+- Artikel belajar bahasa Inggris: contoh kalimat harus benar secara tata bahasa, sertakan arti Indonesianya, dan pakai tabel atau daftar supaya gampang dipindai. Di akhir isi boleh ada satu kalimat penghubung yang wajar ke layanan (misalnya dokumen untuk kuliah di luar negeri), tidak lebih.
 
 ## Format artikel
 File: `src/content/blog/id/<slug-huruf-kecil>.md`

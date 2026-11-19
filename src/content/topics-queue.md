@@ -1,4 +1,4 @@
-# Antrean topik artikel (2 per minggu: Senin & Kamis)
+# Antrean topik cadangan (dipakai slot pagi kalau tidak ada topik yang ramai)
 
 ## Sudah terbit
 - [x] Apa Itu Penerjemah Tersumpah dan Kapan Dibutuhkan?
