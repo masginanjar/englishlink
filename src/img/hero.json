@@ -1,0 +1,23 @@
+[
+ {
+  "file": "hero-1.webp",
+  "bg": "#0184df",
+  "light": false,
+  "w": 1800,
+  "h": 771
+ },
+ {
+  "file": "hero-2.webp",
+  "bg": "#fa9412",
+  "light": true,
+  "w": 1800,
+  "h": 771
+ },
+ {
+  "file": "hero-3.webp",
+  "bg": "#f86964",
+  "light": true,
+  "w": 1800,
+  "h": 771
+ }
+]

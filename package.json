@@ -1,0 +1,13 @@
+{
+  "name": "englishlink-translator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "PREVIEW=1 node build.mjs"
+  },
+  "dependencies": {
+    "marked": "^14.1.0"
+  }
+}
