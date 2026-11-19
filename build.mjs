@@ -131,6 +131,11 @@ function quoteForm(L) {
 const ctaBand = (L) => `<section class="sec"><div class="wrap"><div class="band"><div><h2>${esc(L.ui.ctaBand.title)}</h2><p>${esc(L.ui.ctaBand.text)}</p></div>${btnWa(L.ui.waCta, L.ui.form.fallback, 'btn btn-white')}</div></div></section>`;
 const postCards = (L, posts) => `<ul class="posts">${posts.map((p) => `<li data-k="${esc(p.kicker || L.ui.kicker)}"><a class="post-card" href="${L.paths.blog}${p.slug}/">${textCover(p.slug, p.kicker || L.ui.kicker, p.coverText || p.title, p.cover)}<time datetime="${p.date}">${fmtDate(p.date, L.lang)}</time><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><span class="more">${esc(L.ui.readMore)} ${arrow}</span></a></li>`).join('')}</ul>`;
 
+// Ulasan Google Maps 247 Sworn Translator Jakarta: selalu sebut sumbernya dan tautkan ke halaman aslinya.
+const MAPS_247 = 'https://www.google.com/maps/place/?q=place_id:ChIJgVCamAfzaS4Ryb9y13zdZuA';
+const star = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.9-4.8 4.600 1.200 6.600L12 17.600l-5.900 3.100 1.200-6.600L2.500 9.500l6.600-.900z"/></svg>';
+const groupProof = (L) => { const G = L.home.group; return `<section class="sec"><div class="wrap"><div class="proof"><div class="proof-head"><div><h2>${esc(G.title)}</h2><p class="proof-of">${esc(G.of)}</p></div><div class="proof-score"><div class="stars" aria-hidden="true">${star.repeat(5)}</div><p class="proof-num"><strong>${esc(G.rating)}</strong> · ${esc(G.count)}</p></div></div><div class="proof-quotes">${G.quotes.map((q) => `<figure class="pq"><div class="stars sm" aria-hidden="true">${star.repeat(5)}</div><blockquote>“${esc(q)}”</blockquote><figcaption>${esc(G.by)}</figcaption></figure>`).join('')}</div><div class="proof-foot"><a class="btn btn-primary btn-sm" href="${MAPS_247}" rel="noopener">${esc(G.cta)} ${arrow}</a><span class="proof-asof">${esc(G.asof)}</span></div></div></div></section>`; };
+
 // ---------- Schema ----------
 const orgSchema = (L) => ({
   '@context': 'https://schema.org', '@type': 'ProfessionalService', '@id': `${SITE}/#org`, name: 'Englishlink Translator', url: `${SITE}${L.paths.home}`,
@@ -174,8 +179,9 @@ for (const L of Object.values(LANGS)) {
 <section class="sec"><div class="wrap">${sectionHead(H.servicesTitle, H.servicesLead)}${cards(L, L.services.map((s, i) => svcCard(i)), 'four')}</div></section>
 <section class="sec"><div class="wrap"><div class="extra"><div><h3>${esc(H.extraTitle)}</h3><p>${esc(H.extraText)}</p></div>${btnWa(U.waCta, H.extraWa, 'btn btn-amber')}</div></div></section>
 <section class="sec sec-soft"><div class="wrap">${sectionHead(H.whyTitle, H.whyLead)}<div class="why-grid"><div class="why-photo">${coverImg('foto-pasangan', H.photoAlt2[0], 'photo land')}<span class="chip c0">${ico('check')}${esc(H.why[1].t)}</span><span class="chip c2">${ico('clock')}${esc(H.why[2].t)}</span></div><ul class="why">${H.why.map((w, n) => `<li><span class="ico">${ico(['swap', 'check', 'clock', 'phone'][n])}</span><h3>${esc(w.t)}</h3><p>${esc(w.d)}</p></li>`).join('')}</ul></div></div></section>
-<section class="sec"><div class="wrap">${sectionHead(H.stepsTitle, H.stepsLead)}${stepsList(L.steps)}</div></section>
-<section class="sec sec-soft"><div class="wrap">${sectionHead(H.docsTitle, H.docsLead)}${cards(L, L.docTypes.map((d, i) => docCard(i)), 'four')}</div></section>
+${groupProof(L)}
+<section class="sec sec-soft"><div class="wrap">${sectionHead(H.stepsTitle, H.stepsLead)}${stepsList(L.steps)}</div></section>
+<section class="sec"><div class="wrap">${sectionHead(H.docsTitle, H.docsLead)}${cards(L, L.docTypes.map((d, i) => docCard(i)), 'four')}</div></section>
 ${posts.length ? `<section class="sec"><div class="wrap">${sectionHead(H.blogTitle, '', { href: P.blog, label: U.seeAll })}${postCards(L, posts.slice(0, 3))}</div></section>` : ''}
 <section class="sec ${posts.length ? 'sec-soft' : ''}"><div class="wrap narrow">${sectionHead(H.faqTitle, '', { href: P.faq, label: U.seeAll })}${faqList(L.faq.slice(0, 4))}</div></section>
 ${quoteForm(L)}` });
@@ -231,6 +237,7 @@ ${quoteForm(L)}` });
 <section class="sec"><div class="wrap two"><div class="prose">${A.body.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
 <div>${coverImg('foto-admin', L.home.photoAlt2[1], 'photo wide')}<div class="idcard"><h2>${esc(A.identityTitle)}</h2><dl>${A.identity.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl></div></div></div></section>
 <section class="sec sec-tint"><div class="wrap">${sectionHead(A.standardsTitle)}${points(A.standards)}</div></section>
+${groupProof(L)}
 <section class="sec"><div class="wrap narrow"><h2>${esc(A.privacyTitle)}</h2><p>${esc(A.privacyText)} <a href="${P.privacy}">${esc(U.privacy)}</a>.</p></div></section>${ctaBand(L)}` });
 
   // FAQ

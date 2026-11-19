@@ -73,6 +73,7 @@ export default {
     photoAlt: ['Mahasiswi tersenyum sambil memegang dokumen dan laptop', 'Wisudawan memegang map ijazah', 'Perempuan membawa paspor dan koper siap berangkat ke luar negeri'],
     price: 'Mulai Rp75.000 per halaman',
     photoAlt2: ['Pasangan memeriksa dokumen dan paspor bersama', 'Admin Englishlink melayani lewat chat', 'Ibu dan anak menyiapkan dokumen perjalanan'],
+    group: { title: 'Kata pelanggan di Google Maps', rating: '5,0', count: '959 ulasan', of: 'Ulasan Google Maps untuk 247 Sworn Translator Jakarta', by: 'Ulasan Google Maps', asof: 'Data per 20 November 2026', cta: 'Lihat semua ulasan', quotes: ['The team is very helpful and the sworn stamps are officially recognized.', 'They always respond fast and always willing to help.', 'Professional service and very communicative staff.'] },
     trustLabel: 'Brand resmi dari PT. Penerjemah Tersumpah Indonesia',
     slides: [
       { tag: 'Kuliah & Beasiswa', title: 'Ijazah dan transkripmu, siap dibaca kampus impian.', text: 'Terjemahan dokumen akademik Indonesia ke Inggris. Sebutkan deadline pendaftaranmu, kami atur jadwalnya.', service: 3, chips: ['Ijazah', 'Transkrip', 'SKL'] },

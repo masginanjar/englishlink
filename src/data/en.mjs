@@ -72,6 +72,7 @@ export default {
     photoAlt: ['Smiling student holding a document and a laptop', 'Graduate holding a diploma folder', 'Woman with a passport and suitcase ready to go abroad'],
     price: 'From Rp75,000 per page',
     photoAlt2: ['A couple checking documents and a passport together', 'An Englishlink admin assisting by chat', 'A mother and child preparing travel documents'],
+    group: { title: 'What customers say on Google Maps', rating: '5.0', count: '959 reviews', of: 'Google Maps reviews for 247 Sworn Translator Jakarta', by: 'Google Maps review', asof: 'Figures as of 20 November 2026', cta: 'See all reviews', quotes: ['The team is very helpful and the sworn stamps are officially recognized.', 'They always respond fast and always willing to help.', 'Professional service and very communicative staff.'] },
     trustLabel: 'An official brand of PT. Penerjemah Tersumpah Indonesia',
     slides: [
       { tag: 'Study & Scholarships', title: 'Your diploma and transcript, ready for your dream campus.', text: 'Academic documents translated from Indonesian to English. Tell us your application deadline and we will plan around it.', service: 3, chips: ['Diploma', 'Transcript', 'Letters'] },

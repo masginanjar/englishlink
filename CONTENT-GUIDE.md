@@ -127,3 +127,7 @@ Pilih satu yang paling cocok dengan isi artikel, tulis namanya di `cover:`. Kala
 
 ## Kata kunci sasaran
 penerjemah tersumpah bahasa Inggris · jasa translate Inggris ke Indonesia tersumpah · jasa translate Indonesia ke Inggris tersumpah · penerjemah dokumen bahasa Inggris · jasa terjemahan ijazah bahasa Inggris · penerjemah tersumpah online · jasa terjemahan akta kelahiran bahasa Inggris
+
+## Ulasan
+
+Ulasan Google Maps yang tampil di situs adalah milik 247 Sworn Translator Jakarta. Selalu tulis sumbernya, pakai angka asli (cek ulang berkala), kutip pendek saja, dan jangan ganti nama brand di ulasan jadi Englishlink.
