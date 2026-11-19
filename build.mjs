@@ -60,7 +60,7 @@ const coverImg = (name, alt = '', cls = 'cover') => `<img class="${cls}" ${PREVI
 const DEFAULT_COVER = 'periksa';
 const DOC_COVERS = ['stempel', 'ijazah', 'svc-5', 'svc-2', 'svc-4', 'timbangan', 'periksa'];
 // Cover bertulisan: panel warna + judul singkat + ilustrasi. Dipakai artikel dan halaman kota.
-const textCover = (key, kicker, text, img) => { let h = 0; for (const ch of key) h = (h * 31 + ch.charCodeAt(0)) % 997; return `<div class="tcover tc${h % 4}"><div class="tc-text"><span class="tc-kicker">${esc(kicker)}</span><strong>${esc(text)}</strong><span class="tc-brand">englishlink.co.id</span></div>${coverImg(img, '', 'tc-img')}</div>`; };
+const textCover = (key, kicker, text, img) => { let h = 0; for (const ch of key) h = (h * 31 + ch.charCodeAt(0)) % 997; return `<div class="tcover tc${h % 4}${text.length > 38 ? ' long' : ''}"><div class="tc-text"><span class="tc-kicker">${esc(kicker)}</span><strong>${esc(text)}</strong><span class="tc-brand">englishlink.co.id</span></div>${coverImg(img, '', 'tc-img')}</div>`; };
 
 // ---------- Artikel ----------
 function parsePost(file, lang) {

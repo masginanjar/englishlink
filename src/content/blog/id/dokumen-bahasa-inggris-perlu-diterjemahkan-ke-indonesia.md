@@ -3,6 +3,8 @@ title: Dokumen Bahasa Inggris, Perlu Diterjemahkan ke Indonesia?
 description: Tergantung dipakai untuk apa. Kalau diserahkan ke instansi di Indonesia, biasanya diminta terjemahan. Ini cara mengecek dan menyiapkan dokumennya.
 date: 2026-11-20
 keywords: jasa translate Inggris ke Indonesia tersumpah, penerjemah dokumen bahasa Inggris, terjemahan dokumen Inggris ke Indonesia
+kicker: Tanya jawab
+coverText: Dokumen Inggris, wajib diterjemahkan?
 cover: svc-0
 answer: Tergantung tujuannya. Kalau dokumen berbahasa Inggris itu akan diserahkan ke instansi, kampus, atau pihak resmi di Indonesia, biasanya kamu diminta melampirkan terjemahan bahasa Indonesia, dan sering kali harus dari penerjemah tersumpah. Kalau cuma untuk dibaca sendiri, tidak wajib. Kepastiannya selalu ada di syarat resmi instansi tujuan.
 ---
