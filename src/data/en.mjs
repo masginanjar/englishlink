@@ -9,7 +9,7 @@ export default {
   ui: {
     nav: { services: 'Services', docs: 'Documents', how: 'How It Works', blog: 'Articles', about: 'About', faq: 'FAQ', contact: 'Contact' },
     skip: 'Skip to content',
-    online: { hi: 'Hi, need a hand?', on: 'Our admin is online. Message us and we will review your document.', off: 'Our admin is still online and will reply to your chat. Office operations resume at 08:00 WIB.', close: 'Close' },
+    online: { hi: 'Hi, our admin is online!', on: 'Which document would you like translated? Consult now, it is free.', off: 'Which document would you like translated? Consult now, it is free.', close: 'Close' },
     area: 'Service areas', kicker: 'Guide',
     menu: 'Menu',
     waCta: 'Chat on WhatsApp',

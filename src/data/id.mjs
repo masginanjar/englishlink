@@ -9,7 +9,7 @@ export default {
   ui: {
     nav: { services: 'Layanan', docs: 'Jenis Dokumen', how: 'Cara Kerja', blog: 'Artikel', about: 'Tentang', faq: 'FAQ', contact: 'Kontak' },
     skip: 'Lompat ke konten',
-    online: { hi: 'Hai, ada yang bisa dibantu?', on: 'Admin sedang online. Chat aja, kami cek dokumenmu.', off: 'Admin tetap online dan chat pasti dibalas. Operasional kantor mulai lagi pukul 08.00 WIB.', close: 'Tutup' },
+    online: { hi: 'Hai, admin sedang online!', on: 'Dokumen apa yang ingin kamu terjemahkan? Konsultasi sekarang, gratis.', off: 'Dokumen apa yang ingin kamu terjemahkan? Konsultasi sekarang, gratis.', close: 'Tutup' },
     area: 'Area layanan', kicker: 'Panduan', allTopics: 'Semua',
     menu: 'Menu',
     waCta: 'Chat WhatsApp',
