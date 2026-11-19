@@ -13,6 +13,15 @@ const WA_NUMBER = '6285174132344';
 const WA_DISPLAY = { id: '0851-7413-2344', en: '+62 851-7413-2344' };
 const EMAIL = 'info@englishlink.co.id';
 const PREVIEW = process.env.PREVIEW === '1';
+// Akun media sosial. Isi alamatnya di sini; yang kosong tidak ditampilkan.
+const SOCIAL = [
+  ['Instagram', 'https://www.instagram.com/englishlink.co.id/', '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/>'],
+  ['Threads', '', '<path d="M16.5 11.2c-.3-3-2-4.7-4.6-4.7-2.8 0-4.9 2.100-4.900 5.500s2.100 5.500 5 5.500c2.600 0 4.300-1.300 4.300-3.200 0-1.800-1.500-2.900-3.700-2.900-1.700 0-2.900.800-2.900 2"/>'],
+  ['X', '', '<path d="M5 4l14 16M19 4L5 20"/>'],
+  ['YouTube', '', '<rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M10.500 9.500v5l4.500-2.500z" fill="currentColor"/>'],
+  ['LinkedIn', '', '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.500V17M8 7.500v.1M12 17v-3.500a2 2 0 0 1 4 0V17M12 10.500V17"/>'],
+].filter((x) => x[1]);
+const socialLinks = (cls = 'social') => (SOCIAL.length ? `<ul class="${cls}">${SOCIAL.map(([n, u, d]) => `<li><a href="${u}" rel="me noopener" aria-label="${n} Englishlink"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg><span>${n}</span></a></li>`).join('')}</ul>` : '');
 // Selama belum pakai domain sendiri (belum ada file CNAME), situs tayang di sub-folder GitHub Pages.
 const BASE = fs.existsSync(path.join(path.dirname(fileURLToPath(import.meta.url)), 'CNAME')) ? '' : (process.env.BASE_PATH || '');
 const withBase = (h) => (BASE ? h.replace(/(href|src)="\//g, `$1="${BASE}/`).replace('url=/id/', `url=${BASE}/id/`) : h);
@@ -119,7 +128,7 @@ function quoteForm(L) {
   </form></div></section>`;
 }
 const ctaBand = (L) => `<section class="sec"><div class="wrap"><div class="band"><div><h2>${esc(L.ui.ctaBand.title)}</h2><p>${esc(L.ui.ctaBand.text)}</p></div>${btnWa(L.ui.waCta, L.ui.form.fallback, 'btn btn-white')}</div></div></section>`;
-const postCards = (L, posts) => `<ul class="posts">${posts.map((p) => `<li><a class="post-card" href="${L.paths.blog}${p.slug}/">${textCover(p.slug, p.kicker || L.ui.kicker, p.coverText || p.title, p.cover)}<time datetime="${p.date}">${fmtDate(p.date, L.lang)}</time><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><span class="more">${esc(L.ui.readMore)} ${arrow}</span></a></li>`).join('')}</ul>`;
+const postCards = (L, posts) => `<ul class="posts">${posts.map((p) => `<li data-k="${esc(p.kicker || L.ui.kicker)}"><a class="post-card" href="${L.paths.blog}${p.slug}/">${textCover(p.slug, p.kicker || L.ui.kicker, p.coverText || p.title, p.cover)}<time datetime="${p.date}">${fmtDate(p.date, L.lang)}</time><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><span class="more">${esc(L.ui.readMore)} ${arrow}</span></a></li>`).join('')}</ul>`;
 
 // ---------- Schema ----------
 const orgSchema = (L) => ({
@@ -128,7 +137,7 @@ const orgSchema = (L) => ({
   parentOrganization: { '@type': 'Organization', name: 'PT. Penerjemah Tersumpah Indonesia' },
   address: { '@type': 'PostalAddress', streetAddress: 'Caraka Tower', addressLocality: 'Jakarta Selatan', addressRegion: 'DKI Jakarta', addressCountry: 'ID' },
   openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '08:00', closes: '20:00' }],
-  areaServed: 'ID', knowsLanguage: ['id', 'en'],
+  areaServed: 'ID', knowsLanguage: ['id', 'en'], sameAs: SOCIAL.map((x) => x[1]),
 });
 const faqSchema = (faq) => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
 const crumbSchema = (crumbs) => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.label, item: SITE + c.href })) });
@@ -236,7 +245,7 @@ ${quoteForm(L)}` });
 <div><dt>${esc(C.waLabel)}</dt><dd><a href="${wa(C.waMsg)}" rel="noopener">${WA_DISPLAY[lang]}</a></dd></div>
 <div><dt>${esc(C.emailLabel)}</dt><dd><a href="mailto:${EMAIL}">${EMAIL}</a></dd></div>
 <div><dt>${esc(C.addressLabel)}</dt><dd>${esc(U.address)}</dd></div>
-<div><dt>${esc(C.hoursLabel)}</dt><dd>${esc(C.hoursValue)}</dd></div></dl></div></section>${quoteForm(L)}` });
+<div><dt>${esc(C.hoursLabel)}</dt><dd>${esc(C.hoursValue)}</dd></div>${SOCIAL.length ? `<div><dt>Media sosial</dt><dd>${socialLinks('social dark')}</dd></div>` : ''}</dl></div></section>${quoteForm(L)}` });
 
   // Privasi
   crumbs = [homeCrumb, { label: U.privacy, href: P.privacy }];
@@ -251,7 +260,7 @@ ${quoteForm(L)}` });
     crumbs = [homeCrumb, { label: U.area, href: P.area }];
     const cityChips = (skip) => `<ul class="chips">${cities.filter((c) => c.slug !== skip).map((c) => `<li><a href="${P.area}${c.slug}/">${esc(c.city || c.title)} ${arrow}</a></li>`).join('')}</ul>`;
     add({ lang, key: 'area', path: P.area, ...L.meta.area, schema: [crumbSchema(crumbs)], body: `${pageHero(L, crumbs, L.areaPage.h1, L.areaPage.lead, `<div class="actions">${btnWa(U.waCta, U.form.fallback)}</div>`, 'svc-1')}
-<section class="sec"><div class="wrap">${sectionHead(L.areaPage.listTitle)}${cityChips('')}<p class="req">${esc(L.areaPage.note)}</p></div></section>${quoteForm(L)}` });
+<section class="sec"><div class="wrap">${sectionHead(L.areaPage.listTitle)}${[...new Set(cities.map((c) => c.province || ''))].sort().map((pv) => `<h3 class="prov">${esc(pv)}</h3><ul class="chips left">${cities.filter((c) => (c.province || '') === pv).map((c) => `<li><a href="${P.area}${c.slug}/">${esc(c.city || c.title)} ${arrow}</a></li>`).join('')}</ul>`).join('')}<p class="req">${esc(L.areaPage.note)}</p></div></section>${quoteForm(L)}` });
     for (const c of cities) {
       const href = `${P.area}${c.slug}/`;
       const cr = [...crumbs, { label: c.city || c.title, href }];
@@ -273,7 +282,7 @@ ${quoteForm(L)}` });
   if (P.blog) {
     crumbs = [homeCrumb, { label: U.nav.blog, href: P.blog }];
     add({ lang, key: 'blog', path: P.blog, ...L.meta.blog, schema: [crumbSchema(crumbs)], body: `${pageHero(L, crumbs, L.blogPage.h1, L.blogPage.lead)}
-<section class="sec"><div class="wrap">${postCards(L, posts)}</div></section>${ctaBand(L)}` });
+<section class="sec"><div class="wrap"><div class="filters" data-filter>${['', ...new Set(posts.map((x) => x.kicker || U.kicker))].map((k, n) => `<button type="button" data-k="${esc(k)}"${n ? '' : ' class="on"'}>${esc(k || U.allTopics)}</button>`).join('')}</div>${postCards(L, posts)}</div></section>${ctaBand(L)}` });
     for (const p of posts) {
       const href = `${P.blog}${p.slug}/`;
       const c = [...crumbs, { label: p.title, href }];
@@ -314,7 +323,7 @@ function chrome(page) {
   const footer = `<footer class="site-footer"><div class="wrap foot">
   <div><a class="logo on-dark" href="${P.home}"><span class="logo-mark">E<span>⇄</span></span><span class="logo-text">english<b>link</b></span></a><p>${esc(U.footerTag)}</p></div>
   <div><h2>${esc(U.footerExplore)}</h2><ul>${navItems.map((k) => `<li><a href="${P[k]}">${esc(U.nav[k])}</a></li>`).join('')}${P.area ? `<li><a href="${P.area}">${esc(U.area)}</a></li>` : ''}<li><a href="${P.privacy}">${esc(U.privacy)}</a></li></ul></div>
-  <div><h2>${esc(U.footerContact)}</h2><ul><li><a href="${wa(U.form.fallback)}" rel="noopener">WhatsApp ${WA_DISPLAY[page.lang]}</a></li><li><a href="mailto:${EMAIL}">${EMAIL}</a></li><li>${esc(U.address)}</li><li>${esc(U.hours)}</li></ul></div>
+  <div><h2>${esc(U.footerContact)}</h2><ul><li><a href="${wa(U.form.fallback)}" rel="noopener">WhatsApp ${WA_DISPLAY[page.lang]}</a></li><li><a href="mailto:${EMAIL}">${EMAIL}</a></li><li>${esc(U.address)}</li><li>${esc(U.hours)}</li></ul>${socialLinks()}</div>
 </div><div class="wrap copy">© ${new Date().getFullYear()} Englishlink Translator · PT. Penerjemah Tersumpah Indonesia</div></footer>
 <a class="wa-float" href="${wa(U.form.fallback)}" rel="noopener">${waIcon}<span>${esc(U.waCta)}</span></a>`;
   return `${header}<main id="main">${page.body}</main>${footer}`;

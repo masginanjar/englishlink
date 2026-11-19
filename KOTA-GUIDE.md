@@ -16,6 +16,14 @@ Halaman yang cuma mengganti nama kota bisa dianggap spam oleh Google dan merugik
 - Ganti susunan bagian, judul bagian, contoh dokumen, dan pertanyaan FAQ di tiap halaman. Jangan menyalin kalimat dari halaman kota lain.
 - Kalau untuk suatu daerah tidak ditemukan hal khas yang bisa diverifikasi, lewati dulu daerah itu (beri tanda `[-]` di antrean dengan alasan singkat) dan ambil daerah berikutnya.
 
+## Batas otomatis (pemeriksaan gagal kalau dilanggar)
+- Kemiripan dengan halaman kota lain paling banyak 22%. Jadi langkah pemesanan dan penjelasan layanan harus ditulis ulang dengan kata-kata baru di tiap halaman, atau cukup ditautkan ke `/id/cara-kerja/`.
+- Minimal 380 kata isi.
+- Frasa "penerjemah tersumpah" paling banyak 2 kali per 100 kata.
+
+## Supaya tiap kota terasa beda
+Pilih satu sudut cerita yang paling cocok dengan kotanya dan jadikan itu benang merah halaman: kota pelajar, kota industri, kota pelabuhan, kota wisata, kota perbatasan, kota tambang, kantong pekerja migran, dan seterusnya. Jangan pakai sudut yang sama dengan 2 halaman kota terakhir. Lebih baik melewati satu daerah daripada menerbitkan halaman yang cuma ganti nama.
+
 ## Gaya bahasa
 Sama dengan CONTENT-GUIDE.md: santai, jelas, pakai "kamu" dan "kami", kalimat pendek, tanpa emoji.
 

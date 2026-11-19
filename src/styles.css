@@ -280,6 +280,14 @@ dd{margin:0;font-weight:700}
 .contact-grid div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.2rem}
 .contact-grid dd{font-size:1.08rem;margin-top:.3rem;word-break:break-word}
 
+/* Filter kategori */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.6rem}
+.filters button{font:inherit;font-weight:700;font-size:.92rem;min-height:44px;padding:.5rem 1rem;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.filters button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.posts li[hidden]{display:none}
+.prov{margin:1.6rem 0 .7rem;font-size:1rem;color:var(--muted)}
+.chips.left{justify-content:flex-start}
+
 /* Artikel */
 .posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.1rem}
 .post-card{display:flex;flex-direction:column;height:100%;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.4rem;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
@@ -293,6 +301,15 @@ dd{margin:0;font-weight:700}
 .answer{background:var(--blue-soft);border-left:6px solid var(--blue);border-radius:var(--r-sm);padding:1.1rem 1.3rem;margin:1.5rem 0 2rem}
 .answer strong{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-d)}
 .answer p{margin:.3rem 0 0;font-weight:600;font-size:1.05rem}
+
+/* Media sosial */
+.social{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.social li{margin:0}
+.social a{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:.4rem .9rem;border-radius:999px;border:1px solid rgba(255,255,255,.3);font-weight:700;font-size:.9rem;text-decoration:none}
+.social a:hover{background:rgba(255,255,255,.12);text-decoration:none}
+.social.dark{margin-top:.4rem}
+.social.dark a{border-color:var(--line);color:var(--blue-d)}
+.social.dark a:hover{background:var(--soft)}
 
 /* Footer */
 .site-footer{background:var(--navy);color:#cfd9f5;padding:3rem 0 6rem}

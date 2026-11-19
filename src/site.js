@@ -53,6 +53,13 @@
     var n = Math.round(t.scrollLeft / t.clientWidth);
     document.querySelectorAll('[data-dot]').forEach(function (d, i) { d.classList.toggle('on', i === n); });
   }, true);
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-filter] button');
+    if (!b) return;
+    var k = b.getAttribute('data-k');
+    b.parentNode.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
+    document.querySelectorAll('.posts li').forEach(function (li) { li.hidden = !!k && li.getAttribute('data-k') !== k; });
+  });
   document.addEventListener('submit', function (e) {
     if (e.target.matches && e.target.matches('[data-wa-form]')) e.preventDefault();
   });

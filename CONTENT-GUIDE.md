@@ -12,6 +12,37 @@ Dipakai oleh penulis manusia maupun AI yang menulis artikel terjadwal.
 - Jangan mengarang aturan hukum, nomor peraturan, atau syarat kedutaan. Hal seperti itu hanya boleh ditulis kalau diambil dari sumber resmi yang ditautkan (lihat aturan info terkini). Kalau tidak yakin, tulis "ikuti syarat resmi dari instansi tujuan".
 - Fakta usaha yang boleh dipakai: brand dari PT. Penerjemah Tersumpah Indonesia; fokus Inggris ⇄ Indonesia; juga membantu apostille dan legalisasi notaris, kedutaan, kementerian; WhatsApp 0851-7413-2344; info@englishlink.co.id; Caraka Tower, Jakarta Selatan; buka Senin–Minggu 08.00–20.00 WIB.
 
+## Aturan anti-spam (berlaku untuk SEMUA konten)
+Lebih baik tidak terbit hari itu daripada menerbitkan konten tempelan. Kalau tidak ada bahan yang layak, jangan terbitkan apa pun dan laporkan alasannya.
+
+- Tulis untuk pembaca dulu, baru mesin pencari. Setiap artikel harus menjawab satu pertanyaan nyata sampai tuntas.
+- Kata kunci dipakai secukupnya dan wajar. Frasa "penerjemah tersumpah" paling banyak 2 kali per 100 kata (dicek otomatis).
+- Tidak boleh menulis ulang topik yang sudah ada dengan judul berbeda. Cek daftar file dulu.
+- Tidak boleh menyalin kalimat dari artikel lain di situs ini maupun dari situs lain. Kemiripan antarhalaman di atas 22% membuat pemeriksaan gagal (dicek otomatis).
+- Minimal 380 kata isi (dicek otomatis). Tanpa kalimat pengisi, tanpa pembuka panjang, tanpa pengulangan.
+- Judul jujur, tanpa umpan klik ("wajib tahu", "rahasia", "nomor 3 bikin kaget"), tanpa huruf kapital berlebihan.
+- Ajakan ke layanan Englishlink paling banyak sekali per artikel dan harus nyambung dengan isinya.
+- Link internal hanya yang membantu pembaca, paling banyak 3.
+
+## Supaya kreatif dan beda
+Setiap artikel wajib punya SATU unsur orisinal yang tidak ada di artikel lain: contoh kasus yang umum terjadi (tanpa nama orang), analogi sehari-hari, checklist yang bisa langsung dipakai, tabel perbandingan buatan sendiri, contoh sebelum dan sesudah, atau kuis mini 3 soal dengan jawabannya.
+
+Ganti-ganti bentuk tulisan. Tulis bentuk yang dipakai di frontmatter `format:` dan jangan pakai bentuk yang sama dengan 2 artikel terakhir di slot yang sama:
+
+| `format` | Bentuk |
+|---|---|
+| panduan | Langkah demi langkah |
+| mitos-fakta | Anggapan keliru lalu faktanya |
+| kesalahan | Kesalahan yang sering terjadi dan cara menghindarinya |
+| perbandingan | Dua pilihan dibandingkan dalam tabel |
+| tanya-jawab | Satu pertanyaan besar dijawab dari beberapa sisi |
+| checklist | Daftar periksa siap pakai |
+| kamus-mini | 8–12 istilah dijelaskan singkat dengan contoh |
+| contoh | Kumpulan contoh kalimat atau dokumen dengan penjelasan |
+| kuis | Materi singkat lalu kuis mini |
+
+`coverText` harus langsung memberi tahu isi artikel dengan cara yang menarik tapi jujur, maksimal 6 kata.
+
 ## Dua artikel per hari
 
 | Slot | Isi | `kicker` yang dipakai |
@@ -40,6 +71,7 @@ title: Judul maksimal 60 karakter, mengandung kata kunci
 description: 120–155 karakter, menjawab inti pertanyaan
 date: YYYY-MM-DD
 keywords: kata kunci utama, kata kunci kedua, kata kunci ketiga
+format: salah satu bentuk di tabel "Supaya kreatif dan beda"
 kicker: Satu kata label, misalnya Panduan, Tips, Dasar, Perbandingan, Tanya jawab
 coverText: Judul singkat untuk gambar cover, maksimal 6 kata, harus bisa dipahami tanpa membuka artikel
 cover: nama-gambar (pilih dari daftar cover di bawah)

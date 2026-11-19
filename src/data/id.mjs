@@ -9,7 +9,7 @@ export default {
   ui: {
     nav: { services: 'Layanan', docs: 'Jenis Dokumen', how: 'Cara Kerja', blog: 'Artikel', about: 'Tentang', faq: 'FAQ', contact: 'Kontak' },
     skip: 'Lompat ke konten',
-    area: 'Area layanan', kicker: 'Panduan',
+    area: 'Area layanan', kicker: 'Panduan', allTopics: 'Semua',
     menu: 'Menu',
     waCta: 'Chat WhatsApp',
     estimateCta: 'Minta estimasi biaya',
