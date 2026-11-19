@@ -30,4 +30,35 @@ for(const dir of ['src/content/blog/id','src/content/blog/en','src/content/kota'
 }
 for(const [k,v] of Object.entries(titles))if(v.length>1)console.log('JUDUL GANDA',k,v),err++;
 for(const [k,v] of Object.entries(descs))if(v.length>1)console.log('DESKRIPSI GANDA',k,v),err++;
+
+// Dokumen strategi tetap di repo untuk alur konten, tetapi tidak boleh masuk artefak Pages.
+const PRIVATE=new Set(['CONTENT-GUIDE.md','DESIGN.md','KOTA-GUIDE.md','topics-queue.md','kota-queue.md']);
+const all=[];(function walkAll(d){for(const f of fs.readdirSync(d)){const p=path.join(d,f);fs.statSync(p).isDirectory()?walkAll(p):all.push(p);}})('dist');
+for(const f of all){
+  const base=path.basename(f);
+  if(PRIVATE.has(base)||base.endsWith('.md'))console.log('DOKUMEN INTERNAL TERBIT',f),err++;
+  if(/\.(html|css|js|txt|xml)$/.test(f)&&/fonts\.(googleapis|gstatic)\.com/.test(fs.readFileSync(f,'utf8')))console.log('FONT PIHAK KETIGA',f),err++;
+}
+const vercel=JSON.parse(fs.readFileSync('vercel.json','utf8'));
+const hdrs=Object.fromEntries(vercel.headers[0].headers.map((h)=>[h.key,h.value]));
+const expect={
+  'Strict-Transport-Security':'max-age=31536000; includeSubDomains',
+  'X-Content-Type-Options':'nosniff',
+  'X-Frame-Options':'DENY',
+  'Referrer-Policy':'strict-origin-when-cross-origin',
+  'Permissions-Policy':'accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()',
+};
+for(const [k,v] of Object.entries(expect))if(hdrs[k]!==v)console.log('HEADER VERCEL',k),err++;
+for(const f of files){
+  if(/google[0-9a-f]+\.html$/.test(f))continue;
+  const h=fs.readFileSync(f,'utf8');
+  const meta=(h.match(/http-equiv="Content-Security-Policy" content="([^"]*)"/)||[])[1];
+  if(!meta)console.log('CSP META HILANG',f),err++;
+  else if(meta.includes('frame-ancestors'))console.log('CSP META memuat frame-ancestors (diabaikan browser)',f),err++;
+  else if(f.endsWith(`${path.sep}id${path.sep}index.html`)&&hdrs['Content-Security-Policy']!==meta.replace("object-src 'none';","object-src 'none'; frame-ancestors 'none';"))console.log('CSP HEADER TIDAK SELARAS DENGAN META'),err++;
+  if(!h.includes('name="referrer" content="strict-origin-when-cross-origin"'))console.log('REFERRER HILANG',f),err++;
+  if(!h.includes('/assets/frame.js"'))console.log('FRAME SCRIPT HILANG',f),err++;
+  if(/ style="/.test(h))console.log('STYLE INLINE',f),err++;
+  if(/<script(?![^>]*\bsrc=)(?![^>]*type="application\/ld\+json")/i.test(h))console.log('SCRIPT INLINE',f),err++;
+}
 console.log(files.length,'file dicek,',err,'masalah');process.exit(err?1:0);
