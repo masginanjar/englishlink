@@ -8,7 +8,7 @@ Dipakai oleh penulis manusia maupun AI yang menulis artikel terjadwal.
 - Langsung ke inti. Jelaskan istilah resmi dengan bahasa sehari-hari.
 
 ## Aturan fakta (wajib)
-- Harga: hanya boleh menyebut "harga mulai Rp75.000" dan bahwa angka pastinya diberikan setelah dokumen dicek. Jangan menulis angka harga lain.
+- Harga: hanya boleh menyebut "harga mulai Rp75.000 per halaman" dan bahwa angka pastinya diberikan setelah dokumen dicek. Jangan menulis angka harga lain.
 - Jangan menulis lama pengerjaan pasti, ulasan, jumlah klien, penghargaan, atau garansi.
 - Jangan mengarang aturan hukum, nomor peraturan, atau syarat kedutaan. Hal seperti itu hanya boleh ditulis kalau diambil dari sumber resmi yang ditautkan (lihat aturan info terkini). Kalau tidak yakin, tulis "ikuti syarat resmi dari instansi tujuan".
 - Fakta usaha yang boleh dipakai: brand dari PT. Penerjemah Tersumpah Indonesia; fokus Inggris ⇄ Indonesia; juga membantu apostille dan legalisasi notaris, kedutaan, kementerian; WhatsApp 0851-7413-2344; info@englishlink.co.id; Caraka Tower, Jakarta Selatan; operasional kantor Senin–Minggu 08.00–20.00 WIB; chat WhatsApp online terus dan dibalas.

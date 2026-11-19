@@ -71,7 +71,7 @@ export default {
     whyTitle: 'Kenapa harus *lewat Englishlink*?',
     whyLead: 'Kami bantu urus terjemahan dengan cara yang jelas dan gampang diikuti.',
     photoAlt: ['Mahasiswi tersenyum sambil memegang dokumen dan laptop', 'Wisudawan memegang map ijazah', 'Perempuan membawa paspor dan koper siap berangkat ke luar negeri'],
-    price: 'Harga mulai Rp75.000',
+    price: 'Mulai Rp75.000 per halaman',
     photoAlt2: ['Pasangan memeriksa dokumen dan paspor bersama', 'Admin Englishlink melayani lewat chat', 'Ibu dan anak menyiapkan dokumen perjalanan'],
     trustLabel: 'Brand resmi dari PT. Penerjemah Tersumpah Indonesia',
     slides: [
@@ -196,7 +196,7 @@ export default {
 
   faqPage: { h1: 'Pertanyaan yang sering ditanyakan', lead: 'Jawaban singkatnya ada di sini. Buat kasus spesifik, chat aja langsung.' },
   faq: [
-    { q: 'Berapa biaya terjemahan per halaman?', a: 'Harga mulai Rp75.000. Angka pastinya tergantung jenis dokumen, jumlah halaman, dan seberapa cepat kamu butuh. Biar tidak nebak-nebak, kirim foto dokumennya dulu. Kami kasih estimasi sebelum ada yang dikerjakan.' },
+    { q: 'Berapa biaya terjemahan per halaman?', a: 'Harga mulai Rp75.000 per halaman. Angka pastinya tergantung jenis dokumen, jumlah halaman, dan seberapa cepat kamu butuh. Biar tidak nebak-nebak, kirim foto dokumennya dulu. Kami kasih estimasi sebelum ada yang dikerjakan.' },
     { q: 'Berapa lama proses pengerjaannya?', a: 'Tergantung jumlah halaman dan jenis dokumennya. Estimasi waktu kami kirim bareng estimasi biaya. Kalau kamu punya deadline, bilang dari awal ya.' },
     { q: 'Bisa konsultasi dulu sebelum kirim dokumen?', a: 'Bisa banget. Chat WhatsApp kami online terus dan pasti dibalas, sedangkan operasional kantor berjalan tiap hari pukul 08.00–20.00 WIB. Tanya-tanya dulu tidak dikenakan biaya.' },
     { q: 'Apakah dokumen harus dikirim dalam bentuk asli?', a: 'Buat dicek dan dihitung estimasinya, foto atau scan yang jelas sudah cukup. Kalau instansi tujuanmu punya aturan khusus soal dokumen asli, ceritakan ke kami supaya prosesnya disesuaikan.' },

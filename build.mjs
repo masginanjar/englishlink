@@ -138,7 +138,7 @@ const orgSchema = (L) => ({
   parentOrganization: { '@type': 'Organization', name: 'PT. Penerjemah Tersumpah Indonesia' },
   address: { '@type': 'PostalAddress', streetAddress: 'Caraka Tower', addressLocality: 'Jakarta Selatan', addressRegion: 'DKI Jakarta', addressCountry: 'ID' },
   openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '08:00', closes: '20:00' }],
-  areaServed: 'ID', knowsLanguage: ['id', 'en'], sameAs: [...new Set(SOCIAL.map((x) => x[1]))], priceRange: 'Mulai Rp75.000',
+  areaServed: 'ID', knowsLanguage: ['id', 'en'], sameAs: [...new Set(SOCIAL.map((x) => x[1]))], priceRange: 'Mulai Rp75.000 per halaman',
 });
 const faqSchema = (faq) => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
 const crumbSchema = (crumbs) => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.label, item: SITE + c.href })) });

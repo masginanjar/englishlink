@@ -70,7 +70,7 @@ export default {
     whyTitle: 'Why go with *Englishlink*?',
     whyLead: 'We handle your translation in a way that is clear and easy to follow.',
     photoAlt: ['Smiling student holding a document and a laptop', 'Graduate holding a diploma folder', 'Woman with a passport and suitcase ready to go abroad'],
-    price: 'Prices from Rp75,000',
+    price: 'From Rp75,000 per page',
     photoAlt2: ['A couple checking documents and a passport together', 'An Englishlink admin assisting by chat', 'A mother and child preparing travel documents'],
     trustLabel: 'An official brand of PT. Penerjemah Tersumpah Indonesia',
     slides: [
@@ -194,7 +194,7 @@ export default {
 
   faqPage: { h1: 'Frequently asked questions', lead: 'Short answers below. For your specific case, just message us.' },
   faq: [
-    { q: 'How much does translation cost per page?', a: 'Prices start from Rp75,000. The exact amount depends on the document type, the number of pages and how soon you need it. Send a photo of the document first and we will give you an estimate before any work starts.' },
+    { q: 'How much does translation cost per page?', a: 'Prices start from Rp75,000 per page. The exact amount depends on the document type, the number of pages and how soon you need it. Send a photo of the document first and we will give you an estimate before any work starts.' },
     { q: 'How long does it take?', a: 'It depends on the number of pages and the document type. The time estimate comes with the cost estimate. If you have a deadline, tell us from the start.' },
     { q: 'Can I ask questions before sending documents?', a: 'Yes. Our WhatsApp chat is always online and every message gets a reply, while office operations run daily from 08:00 to 20:00 WIB. Asking questions is free.' },
     { q: 'Do I have to send the original document?', a: 'For review and a quote, a clear photo or scan is enough. If the receiving institution has specific rules about originals, tell us so the process can be adjusted.' },
