@@ -8,7 +8,8 @@ Dipakai oleh penulis manusia maupun AI yang menulis artikel terjadwal.
 - Langsung ke inti. Jelaskan istilah resmi dengan bahasa sehari-hari.
 
 ## Aturan fakta (wajib)
-- Jangan menulis harga, lama pengerjaan pasti, ulasan, jumlah klien, penghargaan, atau garansi.
+- Harga: hanya boleh menyebut "harga mulai Rp75.000" dan bahwa angka pastinya diberikan setelah dokumen dicek. Jangan menulis angka harga lain.
+- Jangan menulis lama pengerjaan pasti, ulasan, jumlah klien, penghargaan, atau garansi.
 - Jangan mengarang aturan hukum, nomor peraturan, atau syarat kedutaan. Hal seperti itu hanya boleh ditulis kalau diambil dari sumber resmi yang ditautkan (lihat aturan info terkini). Kalau tidak yakin, tulis "ikuti syarat resmi dari instansi tujuan".
 - Fakta usaha yang boleh dipakai: brand dari PT. Penerjemah Tersumpah Indonesia; fokus Inggris ⇄ Indonesia; juga membantu apostille dan legalisasi notaris, kedutaan, kementerian; WhatsApp 0851-7413-2344; info@englishlink.co.id; Caraka Tower, Jakarta Selatan; operasional kantor Senin–Minggu 08.00–20.00 WIB; chat WhatsApp online terus dan dibalas.
 
@@ -86,6 +87,14 @@ Isi (500–800 kata):
 4. Bagian `## FAQ` berisi 3 pertanyaan `###` dengan jawaban 1–3 kalimat. Otomatis jadi schema FAQ.
 
 Jangan menulis H1 di isi (judul sudah jadi H1) dan jangan menambah ajakan WhatsApp di akhir (sudah otomatis).
+
+## Versi English (blog dua bahasa)
+- Artikel slot pagi (dokumen, tips, beasiswa) WAJIB dibuat dua file: versi Indonesia di `src/content/blog/id/` dan versi English di `src/content/blog/en/`.
+- Versi English bukan terjemahan kata per kata. Tulis ulang secara alami untuk pembaca berbahasa Inggris (misalnya WNA di Indonesia atau kampus dan kantor di luar negeri), dengan slug, judul, dan `keywords` berbahasa Inggris.
+- Di frontmatter versi English tambahkan `ref: <slug file Indonesia>` supaya kedua versi saling terhubung. `kicker` pakai padanan English: Guide, Tips, Scholarship, Comparison, Q&A, Basics, Latest.
+- Link internal versi English memakai path `/en/...` yang benar-benar ada (cek `src/data/en.mjs`).
+- Artikel slot sore (belajar bahasa Inggris) hanya versi Indonesia, karena ditujukan untuk pembelajar Indonesia.
+- Halaman kota hanya versi Indonesia.
 
 ## Daftar cover (src/img/covers/)
 Pilih satu yang paling cocok dengan isi artikel, tulis namanya di `cover:`. Kalau dikosongkan, dipakai `periksa`.

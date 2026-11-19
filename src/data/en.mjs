@@ -4,13 +4,13 @@ export default {
   locale: 'en_US',
   paths: {
     home: '/en/', services: '/en/services/', docs: '/en/documents/', how: '/en/how-it-works/',
-    blog: null, about: '/en/about/', faq: '/en/faq/', contact: '/en/contact/', privacy: '/en/privacy/',
+    blog: '/en/articles/', about: '/en/about/', faq: '/en/faq/', contact: '/en/contact/', privacy: '/en/privacy/',
   },
   ui: {
     nav: { services: 'Services', docs: 'Documents', how: 'How It Works', blog: 'Articles', about: 'About', faq: 'FAQ', contact: 'Contact' },
     skip: 'Skip to content',
     online: { hi: 'Hi, our admin is online!', on: 'Which document would you like translated? Consult now, it is free.', off: 'Which document would you like translated? Consult now, it is free.', close: 'Close' },
-    area: 'Service areas', kicker: 'Guide',
+    area: 'Service areas', kicker: 'Guide', allTopics: 'All',
     menu: 'Menu',
     waCta: 'Chat on WhatsApp',
     estimateCta: 'Get a quote',
@@ -48,6 +48,7 @@ export default {
     services: { title: 'English ⇄ Indonesian Sworn Translation Services | Englishlink', desc: 'Choose a service: English to Indonesian, Indonesian to English, official, academic, corporate, visa and study documents, and scanned files.' },
     docs: { title: 'Documents We Translate | Englishlink Translator', desc: 'Birth certificates, family cards, diplomas, transcripts, passports, marriage certificates, contracts, powers of attorney and bank statements.' },
     how: { title: 'How to Order a Sworn Translation Online | Englishlink', desc: 'Five steps: send your document, receive a quote, approve and pay, translation and review, then receive the result in digital or printed form.' },
+    blog: { title: 'Articles & Guides on Document Translation | Englishlink', desc: 'Short, practical guides on sworn translation, diplomas, certificates, visa documents and how to prepare your paperwork for use abroad.' },
     about: { title: 'About Englishlink Translator | PT. Penerjemah Tersumpah Indonesia', desc: 'Englishlink Translator is an English–Indonesian translation brand of PT. Penerjemah Tersumpah Indonesia at Caraka Tower, South Jakarta.' },
     faq: { title: 'Sworn Translation FAQ: Cost, Timing, Results | Englishlink', desc: 'Short answers on cost per page, turnaround, original documents, digital and printed results, corrections and confidentiality.' },
     contact: { title: 'Contact Englishlink Translator | WhatsApp +62 851-7413-2344', desc: 'Reach Englishlink on WhatsApp +62 851-7413-2344 or info@englishlink.co.id. Caraka Tower, South Jakarta. Open daily 08:00–20:00 WIB.' },
@@ -69,6 +70,7 @@ export default {
     whyTitle: 'Why go with *Englishlink*?',
     whyLead: 'We handle your translation in a way that is clear and easy to follow.',
     photoAlt: ['Smiling student holding a document and a laptop', 'Graduate holding a diploma folder', 'Woman with a passport and suitcase ready to go abroad'],
+    price: 'Prices from Rp75,000',
     trustLabel: 'An official brand of PT. Penerjemah Tersumpah Indonesia',
     slides: [
       { tag: 'Study & Scholarships', title: 'Your diploma and transcript, ready for your dream campus.', text: 'Academic documents translated from Indonesian to English. Tell us your application deadline and we will plan around it.', service: 3, chips: ['Diploma', 'Transcript', 'Letters'] },
@@ -83,7 +85,7 @@ export default {
     extraTitle: 'Using the document abroad?',
     extraText: 'Besides translation, we assist with apostille and with notary, embassy and ministry legalization. Tell us the destination country and we will explain the order of steps.',
     extraWa: 'Hello Englishlink, I have a question about apostille/legalization.',
-    blogTitle: '', faqTitle: 'Still unsure about *getting started*?',
+    blogTitle: 'Guides to keep your paperwork *on track*', faqTitle: 'Still unsure about *getting started*?',
   },
 
   servicesPage: { h1: 'Englishlink Translator services', lead: 'Everything here serves one goal: tidy English ⇄ Indonesian translation you can use for official purposes.' },
@@ -191,7 +193,7 @@ export default {
 
   faqPage: { h1: 'Frequently asked questions', lead: 'Short answers below. For your specific case, just message us.' },
   faq: [
-    { q: 'How much does translation cost per page?', a: 'It depends on the document type, the number of pages and how soon you need it. Send a photo of the document first and we will give you an estimate before any work starts.' },
+    { q: 'How much does translation cost per page?', a: 'Prices start from Rp75,000. The exact amount depends on the document type, the number of pages and how soon you need it. Send a photo of the document first and we will give you an estimate before any work starts.' },
     { q: 'How long does it take?', a: 'It depends on the number of pages and the document type. The time estimate comes with the cost estimate. If you have a deadline, tell us from the start.' },
     { q: 'Can I ask questions before sending documents?', a: 'Yes. Our WhatsApp chat is always online and every message gets a reply, while office operations run daily from 08:00 to 20:00 WIB. Asking questions is free.' },
     { q: 'Do I have to send the original document?', a: 'For review and a quote, a clear photo or scan is enough. If the receiving institution has specific rules about originals, tell us so the process can be adjusted.' },
@@ -222,6 +224,7 @@ export default {
     identity: [['Brand', 'Englishlink Translator'], ['Company', 'PT. Penerjemah Tersumpah Indonesia'], ['Address', 'Caraka Tower, South Jakarta'], ['Hours', 'Monday–Sunday, 08:00–20:00 WIB']],
   },
 
+  blogPage: { h1: 'Articles & guides', lead: 'Short explanations that get to the point, so you understand the process before handling your documents.' },
   contact: { h1: 'Talk to us', lead: 'Fastest way: WhatsApp. Send a photo of the document so we can review it right away.', waLabel: 'WhatsApp', emailLabel: 'Email', addressLabel: 'Address', hoursLabel: 'Hours', hoursValue: 'Office: Monday–Sunday, 08:00–20:00 WIB. WhatsApp chat: always online', waMsg: 'Hello Englishlink, I would like to ask about a document translation.' },
 
   privacy: {

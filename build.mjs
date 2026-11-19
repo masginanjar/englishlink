@@ -13,13 +13,14 @@ const WA_NUMBER = '6285174132344';
 const WA_DISPLAY = { id: '0851-7413-2344', en: '+62 851-7413-2344' };
 const EMAIL = 'info@englishlink.co.id';
 const PREVIEW = process.env.PREVIEW === '1';
-// Akun media sosial. Isi alamatnya di sini; yang kosong tidak ditampilkan.
+// Akun media sosial. Untuk sementara semua ikon diarahkan ke Instagram (permintaan pemilik); ganti IG dengan alamat akun aslinya kalau sudah ada.
+const IG = 'https://www.instagram.com/englishlink.co.id/';
 const SOCIAL = [
-  ['Instagram', 'https://www.instagram.com/englishlink.co.id/', '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/>'],
-  ['Threads', '', '<path d="M16.5 11.2c-.3-3-2-4.7-4.6-4.7-2.8 0-4.9 2.100-4.900 5.500s2.100 5.500 5 5.500c2.600 0 4.300-1.300 4.300-3.200 0-1.800-1.500-2.900-3.700-2.900-1.700 0-2.900.800-2.900 2"/>'],
-  ['X', '', '<path d="M5 4l14 16M19 4L5 20"/>'],
-  ['YouTube', '', '<rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M10.500 9.500v5l4.500-2.500z" fill="currentColor"/>'],
-  ['LinkedIn', '', '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.500V17M8 7.500v.1M12 17v-3.500a2 2 0 0 1 4 0V17M12 10.500V17"/>'],
+  ['Instagram', IG, '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/>'],
+  ['Threads', IG, '<path d="M16.5 11.2c-.3-3-2-4.7-4.6-4.7-2.8 0-4.9 2.100-4.900 5.500s2.100 5.500 5 5.500c2.600 0 4.300-1.300 4.300-3.200 0-1.800-1.500-2.900-3.700-2.900-1.700 0-2.900.800-2.900 2"/>'],
+  ['X', IG, '<path d="M5 4l14 16M19 4L5 20"/>'],
+  ['YouTube', IG, '<rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M10.500 9.500v5l4.500-2.500z" fill="currentColor"/>'],
+  ['LinkedIn', IG, '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.500V17M8 7.500v.1M12 17v-3.500a2 2 0 0 1 4 0V17M12 10.500V17"/>'],
 ].filter((x) => x[1]);
 const socialLinks = (cls = 'social') => (SOCIAL.length ? `<ul class="${cls}">${SOCIAL.map(([n, u, d]) => `<li><a href="${u}" rel="me noopener" aria-label="${n} Englishlink"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg><span>${n}</span></a></li>`).join('')}</ul>` : '');
 // Selama belum pakai domain sendiri (belum ada file CNAME), situs tayang di sub-folder GitHub Pages.
@@ -137,7 +138,7 @@ const orgSchema = (L) => ({
   parentOrganization: { '@type': 'Organization', name: 'PT. Penerjemah Tersumpah Indonesia' },
   address: { '@type': 'PostalAddress', streetAddress: 'Caraka Tower', addressLocality: 'Jakarta Selatan', addressRegion: 'DKI Jakarta', addressCountry: 'ID' },
   openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '08:00', closes: '20:00' }],
-  areaServed: 'ID', knowsLanguage: ['id', 'en'], sameAs: SOCIAL.map((x) => x[1]),
+  areaServed: 'ID', knowsLanguage: ['id', 'en'], sameAs: [...new Set(SOCIAL.map((x) => x[1]))], priceRange: 'Mulai Rp75.000',
 });
 const faqSchema = (faq) => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
 const crumbSchema = (crumbs) => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.label, item: SITE + c.href })) });
@@ -169,7 +170,7 @@ for (const L of Object.values(LANGS)) {
   add({ lang, key: 'home', path: P.home, ...L.meta.home, schema: [orgSchema(L), faqSchema(L.faq.slice(0, 4))], body: `
 <section class="hero"><div class="wrap"><div class="slides" data-slides tabindex="0" aria-label="${esc(H.eyebrow)}">${slides.join('')}</div>
 <div class="dots">${slides.map((_, n) => `<button type="button" data-dot="${n}"${n ? '' : ' class="on"'} aria-label="Slide ${n + 1}"></button>`).join('')}</div></div></section>
-<section class="trust"><div class="wrap trust-in"><p>${esc(H.trustLabel)}</p><ul>${[['clock', U.hours], ['pin', U.address], ['phone', H.facts[2]], ['swap', H.facts[1]]].map(([i, t]) => `<li>${ico(i)}<span>${esc(t)}</span></li>`).join('')}</ul></div></section>
+<section class="trust"><div class="wrap trust-in"><p>${esc(H.trustLabel)}</p><ul>${[['bank', H.price], ['clock', U.hours], ['pin', U.address], ['phone', H.facts[2]]].map(([i, t]) => `<li>${ico(i)}<span>${esc(t)}</span></li>`).join('')}</ul></div></section>
 <section class="sec"><div class="wrap">${sectionHead(H.servicesTitle, H.servicesLead)}${cards(L, L.services.map((s, i) => svcCard(i)), 'four')}</div></section>
 <section class="sec"><div class="wrap"><div class="extra"><div><h3>${esc(H.extraTitle)}</h3><p>${esc(H.extraText)}</p></div>${btnWa(U.waCta, H.extraWa, 'btn btn-amber')}</div></div></section>
 <section class="sec sec-soft"><div class="wrap">${sectionHead(H.whyTitle, H.whyLead)}<div class="why-grid"><div class="why-photo">${coverImg('orang-2', H.photoAlt[1], 'photo')}<span class="chip c0">${ico('check')}${esc(H.why[1].t)}</span><span class="chip c2">${ico('clock')}${esc(H.why[2].t)}</span></div><ul class="why">${H.why.map((w, n) => `<li><span class="ico">${ico(['swap', 'check', 'clock', 'phone'][n])}</span><h3>${esc(w.t)}</h3><p>${esc(w.d)}</p></li>`).join('')}</ul></div></div></section>
@@ -289,7 +290,7 @@ ${quoteForm(L)}` });
       const schema = [crumbSchema(c), { '@context': 'https://schema.org', '@type': 'Article', headline: p.title, description: p.description, datePublished: p.date, dateModified: p.updated, inLanguage: lang, image: `${SITE}/assets/img/covers/${p.cover}.webp`, mainEntityOfPage: SITE + href, keywords: p.keywords || '',
         author: { '@type': 'Organization', name: U.author, url: SITE + P.about }, publisher: { '@id': `${SITE}/#org`, '@type': 'Organization', name: 'Englishlink Translator' } }];
       if (p.faq.length) schema.push(faqSchema(p.faq));
-      add({ lang, key: `post:${p.slug}`, path: href, title: p.title.length > 50 ? p.title : `${p.title} | Englishlink`, desc: p.description, ogType: 'article', ogImage: `${SITE}/assets/img/covers/${p.cover}.webp`, schema, body: `<article class="post"><div class="wrap narrow">${crumbsHtml(c)}
+      add({ lang, key: `post:${p.ref || p.slug}`, path: href, title: p.title.length > 50 ? p.title : `${p.title} | Englishlink`, desc: p.description, ogType: 'article', ogImage: `${SITE}/assets/img/covers/${p.cover}.webp`, schema, body: `<article class="post"><div class="wrap narrow">${crumbsHtml(c)}
 <h1>${esc(p.title)}</h1>
 <p class="post-meta">${esc(U.by)} <a href="${P.about}">${esc(U.author)}</a> · ${esc(U.published)} <time datetime="${p.date}">${fmtDate(p.date, lang)}</time>${p.updated !== p.date ? ` · ${esc(U.updated)} <time datetime="${p.updated}">${fmtDate(p.updated, lang)}</time>` : ''} · ${p.minutes} ${esc(U.minRead)}</p>
 <figure class="cover-fig">${textCover(p.slug, p.kicker || U.kicker, p.coverText || p.title, p.cover)}</figure>

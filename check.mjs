@@ -14,7 +14,7 @@ for(const f of files){const h=fs.readFileSync(f,'utf8');if(f.endsWith('dist/inde
 // Anti-spam: panjang minimum, kepadatan kata kunci, dan kemiripan antarhalaman
 const words=(t)=>t.toLowerCase().replace(/[^a-z0-9à-ÿ\s]/gi,' ').split(/\s+/).filter(Boolean);
 const shingles=(w)=>{const S=new Set();for(let i=0;i+5<=w.length;i++)S.add(w.slice(i,i+5).join(' '));return S;};
-for(const dir of ['src/content/blog/id','src/content/kota']){
+for(const dir of ['src/content/blog/id','src/content/blog/en','src/content/kota']){
   if(!fs.existsSync(dir))continue;
   const docs=fs.readdirSync(dir).filter(f=>f.endsWith('.md')).map(f=>{const raw=fs.readFileSync(path.join(dir,f),'utf8');const body=raw.replace(/^---[\s\S]*?---/,'');const w=words(body);return{f:path.join(dir,f),w,sh:shingles(w),body:body.toLowerCase()};});
   for(const d of docs){
