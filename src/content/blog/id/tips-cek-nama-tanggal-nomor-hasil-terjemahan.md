@@ -42,6 +42,24 @@ Cek tanggal lahir, tanggal terbit dokumen, dan tanggal lulus atau tanggal menika
 
 Instansi luar negeri mencocokkan dokumen satu sama lain. Kalau nama di terjemahan akta beda satu huruf dengan paspor, mereka bisa menganggap itu dua orang berbeda dan minta dokumen tambahan.
 
+## Kuis mini: bisa temukan bedanya?
+
+Coba cari perbedaan di tiga pasangan ini tanpa melihat jawabannya dulu.
+
+| Di dokumen asli | Di dokumen lain |
+|---|---|
+| Muhamad Rizky Pratama | Muhammad Rizky Pratama |
+| 12/03/1999 | 03/12/1999 |
+| 3275014507990006 | 3275014507990008 |
+
+**Jawaban:** baris pertama beda jumlah huruf "m". Baris kedua bisa dibaca 12 Maret atau 3 Desember, tergantung format tanggal negaranya. Baris ketiga beda di angka terakhir.
+
+Kalau kamu butuh lebih dari beberapa detik, itu wajar. Mata manusia cenderung membaca apa yang ia harapkan, bukan apa yang tertulis. Itu sebabnya pengecekan paling ampuh dilakukan pelan-pelan, satu baris satu kali, bukan sekilas.
+
+## Kapan waktu terbaik untuk mengecek?
+
+Jangan mengecek tepat setelah menerima hasil sambil terburu-buru. Sisihkan lima menit yang tenang, sebaiknya di layar yang lebih besar dari HP atau pada hasil cetak. Kalau bisa, minta satu orang lain membacakan dokumen asli sementara kamu mengikuti terjemahannya.
+
 ## FAQ
 
 ### Nama di akta dan paspor saya memang beda, bagaimana?

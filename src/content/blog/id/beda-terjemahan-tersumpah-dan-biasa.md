@@ -34,6 +34,26 @@ Kalau tujuannya cuma supaya isi dokumen **dipahami**, bukan disahkan. Misalnya m
 - **Mengira tersumpah berarti otomatis sah di mana-mana.** Beberapa negara masih minta apostille atau legalisasi.
 - **Menerjemahkan sendiri lalu minta dicap.** Penerjemah tersumpah bertanggung jawab atas isi, jadi dokumen tetap diterjemahkan dan diperiksa olehnya.
 
+## Tes cepat 30 detik
+
+Masih bingung pilih yang mana? Jawab tiga pertanyaan ini:
+
+1. **Dokumennya diserahkan ke siapa?** Kalau ke kedutaan, kampus, pengadilan, atau kantor pemerintah, kemungkinan besar butuh yang resmi.
+2. **Apakah di daftar syarat ada kata "sworn", "certified", atau "tersumpah"?** Kalau ada, jawabannya sudah jelas.
+3. **Kalau terjemahannya keliru, siapa yang menanggung akibatnya?** Kalau akibatnya berkas ditolak atau perjanjian jadi bermasalah, jangan ambil risiko.
+
+Dua jawaban "ya" atau lebih berarti pilih yang resmi.
+
+## Contoh di dunia nyata
+
+Sebuah perusahaan menerima draf kontrak 40 halaman dari calon mitra di luar negeri. Tim internal hanya perlu memahami isinya dulu untuk rapat, jadi mereka memesan terjemahan biasa supaya cepat dibaca. Setelah kedua pihak sepakat dan kontrak final harus dilampirkan ke instansi, barulah versi finalnya diterjemahkan secara resmi.
+
+Cara ini masuk akal: dokumen yang masih berubah-ubah tidak perlu disahkan, cukup dipahami. Yang disahkan adalah versi akhir yang benar-benar dipakai.
+
+## Kalau salah pilih, apa akibatnya?
+
+Memesan yang resmi padahal tidak diminta hanya membuatmu membayar lebih. Sebaliknya, memesan yang biasa padahal diminta yang resmi bisa membuat berkasmu dikembalikan dan jadwalmu mundur. Jadi kalau ragu dan tenggatnya ketat, tanya dulu ke pihak penerima.
+
 ## FAQ
 
 ### Apakah terjemahan tersumpah lebih mahal?

@@ -44,6 +44,16 @@ Karena kantor kami di Caraka Tower, kamu punya pilihan yang tidak dimiliki kota 
 
 Butuh terjemahan yang wajib dari penerjemah tersumpah? Lihat penjelasannya di halaman [terjemahan tersumpah dokumen resmi](/id/layanan/dokumen-resmi/).
 
+## Kapan sebaiknya mulai mengurus?
+
+Di Jakarta Selatan, urusan dokumen sering menumpuk di waktu yang sama: menjelang musim pendaftaran kuliah, sebelum libur panjang, dan saat perusahaan menutup kontrak akhir tahun. Jadwal wawancara visa dan janji temu di kantor perwakilan negara asing juga tidak bisa digeser sesuka hati.
+
+Patokan gampangnya: begitu kamu memegang daftar syarat resmi, langsung kirim dokumennya untuk dicek. Jangan menunggu sampai semua berkas lain lengkap, karena terjemahan bisa berjalan paralel dengan urusan lainnya.
+
+## Tips untuk yang kerja kantoran
+
+Tidak sempat keluar kantor di jam kerja? Kirim foto dokumennya saat istirahat siang. Karena layanan chat buka sampai malam dan tetap jalan di akhir pekan, kamu bisa melanjutkan percakapan sepulang kerja tanpa harus izin.
+
 ## FAQ
 
 ### Apakah harus datang ke kantor?

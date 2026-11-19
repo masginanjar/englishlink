@@ -34,6 +34,25 @@ Batas pendaftaran kampus dan beasiswa tidak bisa ditawar. Begitu daftar syaratny
 
 Arah sebaliknya juga bisa. Ijazah berbahasa Inggris yang mau dipakai di Indonesia, misalnya untuk penyetaraan atau melamar kerja, bisa diterjemahkan ke Bahasa Indonesia.
 
+## Kesalahan yang paling sering bikin berkas dikembalikan
+
+1. **Hanya menerjemahkan ijazah, transkripnya lupa.** Banyak kampus meminta keduanya sebagai satu paket.
+2. **Nama di ijazah beda dengan paspor.** Misalnya ijazah tertulis satu kata, paspor dua kata. Terjemahan tetap mengikuti ijazah, jadi siapkan dokumen pendukung kalau kampus menanyakannya.
+3. **Halaman legalisir tidak ikut difoto.** Cap dan tanda tangan di halaman belakang termasuk bagian dokumen.
+4. **Mengurus terjemahan setelah akun pendaftaran dibuka.** Padahal mengunggah berkas sering jadi langkah pertama.
+5. **Mengira satu terjemahan bisa dipakai untuk semua tujuan.** Sebagian penerima punya format atau syarat tambahan sendiri.
+
+## Urutan kerja yang aman untuk pemburu beasiswa
+
+Supaya tidak kejar-kejaran dengan waktu, pakai urutan ini:
+
+- **Jauh hari:** kumpulkan ijazah, transkrip, dan surat keterangan. Cek ejaan nama di semua dokumen.
+- **Begitu daftar syarat keluar:** tandai dokumen mana yang wajib diterjemahkan dan mana yang perlu legalisasi atau apostille.
+- **Langsung setelah itu:** kirim dokumen untuk dicek dan minta estimasi, sebutkan tanggal tutup pendaftaran.
+- **Setelah hasil diterima:** cocokkan nama, gelar, dan nilai, baru unggah ke portal.
+
+Dengan urutan ini, kalau ada yang perlu diperbaiki, kamu masih punya ruang.
+
 ## FAQ
 
 ### Apakah ijazah yang sudah dua bahasa masih perlu diterjemahkan?

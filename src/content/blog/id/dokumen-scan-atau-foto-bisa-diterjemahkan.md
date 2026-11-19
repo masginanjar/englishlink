@@ -36,6 +36,27 @@ Untuk pengecekan dan estimasi, foto atau scan sudah cukup. Tapi sebagian instans
 1. Apakah terjemahan harus dilampiri salinan dokumen sumber?
 2. Apakah hasil digital diterima, atau harus cetak dengan cap basah?
 
+## Sebelum dan sesudah: foto yang bikin repot vs foto yang langsung jadi
+
+| Foto yang bikin repot | Foto yang langsung bisa dikerjakan |
+|---|---|
+| Diambil miring sambil berdiri | Diambil tegak lurus, dokumen di atas meja |
+| Ada bayangan HP di tengah halaman | Cahaya datang dari samping, tanpa bayangan |
+| Sudut atas terpotong, nomor dokumen hilang | Empat sudut kertas terlihat semua |
+| Dikirim lewat aplikasi yang memperkecil gambar | Dikirim sebagai "dokumen" atau file asli |
+
+Tips kecil yang sering terlewat: saat mengirim lewat WhatsApp, pilih kirim sebagai **Dokumen**, bukan sebagai foto biasa. Dengan begitu gambarnya tidak dikompres dan huruf kecil tetap terbaca.
+
+## Checklist 1 menit sebelum kirim
+
+- [ ] Semua halaman sudah difoto, termasuk halaman belakang yang ada cap atau catatan.
+- [ ] Nama, tanggal, dan nomor bisa dibaca tanpa perlu diperbesar berkali-kali.
+- [ ] Urutan halaman sudah benar.
+- [ ] Nama file jelas, misalnya `ijazah-depan` dan `ijazah-belakang`.
+- [ ] Kamu sudah menyebutkan dokumennya mau dipakai untuk apa.
+
+Kalau lima kotak itu sudah tercentang, pengecekan biasanya berjalan mulus dan kamu tidak perlu bolak-balik kirim ulang.
+
 ## FAQ
 
 ### Apakah tangkapan layar bisa diterjemahkan?

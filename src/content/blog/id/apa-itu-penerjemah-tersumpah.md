@@ -44,6 +44,18 @@ Tidak semua hal perlu disumpah. Untuk CV, email, materi presentasi, atau dokumen
 3. Cek apakah mereka juga minta legalisasi atau apostille.
 4. Kalau masih belum jelas, kirim daftar syaratnya ke kami biar dibantu baca.
 
+## Analogi biar gampang kebayang
+
+Bayangkan kamu minta teman yang jago bahasa Inggris menerjemahkan akta kelahiranmu. Hasilnya bisa saja benar semua. Masalahnya, petugas kedutaan tidak kenal temanmu dan tidak punya cara untuk memastikan hasilnya bisa dipercaya.
+
+Di sinilah bedanya. Terjemahan resmi itu mirip fotokopi yang sudah dilegalisir: isinya sama dengan aslinya, tapi ada pihak berwenang yang berani menandatangani dan bertanggung jawab atas kesesuaiannya. Petugas cukup melihat pernyataan, tanda tangan, dan capnya.
+
+## Contoh kasus yang sering terjadi
+
+Seorang lulusan baru mau daftar S2 di luar negeri. Ia menerjemahkan ijazahnya sendiri karena merasa mampu, lalu mengunggahnya ke portal kampus. Dua minggu kemudian berkasnya dikembalikan dengan catatan singkat: terjemahan harus dibuat pihak resmi. Waktu yang hilang justru lebih mahal daripada biaya terjemahannya, apalagi kalau tenggat pendaftaran sudah dekat.
+
+Pelajarannya sederhana: baca syarat dokumen sampai habis sebelum mengerjakan apa pun.
+
 ## FAQ
 
 ### Apakah penerjemah tersumpah sama dengan notaris?
