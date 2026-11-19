@@ -2,7 +2,7 @@
 import fs from 'node:fs'; import path from 'node:path';
 const files=[];(function walk(d){for(const f of fs.readdirSync(d)){const p=path.join(d,f);fs.statSync(p).isDirectory()?walk(p):p.endsWith('.html')&&files.push(p);}})('dist');
 let err=0;const titles={},descs={};
-for(const f of files){const h=fs.readFileSync(f,'utf8');if(f.endsWith('dist/index.html')||f.endsWith('404.html'))continue;
+for(const f of files){const h=fs.readFileSync(f,'utf8');if(f.endsWith('dist/index.html')||f.endsWith('404.html')||/google[0-9a-f]+\.html$/.test(f))continue;
   const t=(h.match(/<title>(.*?)<\/title>/)||[])[1]||'';const d=(h.match(/name="description" content="(.*?)"/)||[])[1]||'';
   (titles[t]??=[]).push(f);(descs[d]??=[]).push(f);
   const tl=t.replace(/&amp;/g,'&').length, dl=d.replace(/&amp;/g,'&').length;

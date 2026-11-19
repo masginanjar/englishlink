@@ -384,6 +384,7 @@ ${js}</script></body></html>`);
   write('dist/assets/styles.css', css);
   write('dist/assets/site.js', js);
   write('dist/favicon.svg', favicon);
+  if (fs.existsSync(path.join(ROOT, 'static'))) fs.cpSync(path.join(ROOT, 'static'), path.join(ROOT, 'dist'), { recursive: true }); // file verifikasi dan file statis lain
   fs.cpSync(path.join(ROOT, 'src/img/covers'), path.join(ROOT, 'dist/assets/img/covers'), { recursive: true });
   for (const h of HERO) { fs.mkdirSync(path.join(ROOT, 'dist/assets/img'), { recursive: true }); fs.copyFileSync(path.join(ROOT, 'src/img', h.file), path.join(ROOT, 'dist/assets/img', h.file)); }
   write('dist/index.html', `<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>Englishlink Translator</title><link rel="canonical" href="${SITE}/id/"><meta http-equiv="refresh" content="0; url=/id/"></head><body><a href="/id/">Englishlink Translator</a></body></html>`);
