@@ -62,7 +62,7 @@ const hl = (t) => esc(t).replace(/\*(.+?)\*/g, '<span class="hl">$1</span>');
 const HERO = fs.existsSync(path.join(ROOT, 'src/img/hero.json')) ? JSON.parse(read('src/img/hero.json')) : [];
 const heroSrc = (h) => (PREVIEW ? `data:image/webp;base64,${fs.readFileSync(path.join(ROOT, 'src/img', h.file)).toString('base64')}` : `/assets/img/${h.file}`);
 const photo = (n, alt) => (HERO[n] ? `<img class="slide-photo" src="${heroSrc(HERO[n])}" alt="${esc(alt)}" width="${HERO[n].w}" height="${HERO[n].h}"${n ? ' loading="lazy"' : ' fetchpriority="high"'}>` : '');
-const photoAttr = (n) => (HERO[n] ? ` has-photo${HERO[n].light ? ' on-light' : ''}" style="background-color:${HERO[n].bg}` : '');
+const photoAttr = (n) => (HERO[n] ? ` has-photo hero-bg-${n}${HERO[n].light ? ' on-light' : ''}` : '');
 
 // Gambar cover (kartu layanan dan artikel). File ada di src/img/covers/<nama>.webp
 const BLANK = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
@@ -337,7 +337,10 @@ function chrome(page) {
 <div class="online-pop" data-online hidden data-on="${esc(U.online.on)}" data-off="${esc(U.online.off)}" role="status"><span class="dot"></span><div><strong>${esc(U.online.hi)}</strong><p data-online-text></p></div><a class="btn btn-sm btn-wa" href="${wa(U.form.fallback)}" rel="noopener">${waIcon}<span>Chat</span></a><button type="button" data-online-close aria-label="${esc(U.online.close)}">×</button></div>`;
   return `${header}<main id="main">${page.body}</main>${footer}`;
 }
-const FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">';
+// CSP lewat <meta>: berlaku di GitHub Pages. frame-ancestors diabaikan browser pada meta,
+// jadi tidak ditulis di sini (ada di vercel.json dan panduan Cloudflare). Pengaman bingkai: /assets/frame.js.
+const CSP = "default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https://wa.me; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; upgrade-insecure-requests";
+const HEAD_SECURITY = `<meta http-equiv="Content-Security-Policy" content="${CSP}">\n<meta name="referrer" content="strict-origin-when-cross-origin">`;
 function html(page) {
   const L = LANGS[page.lang];
   const alt = altOf(page);
@@ -347,13 +350,14 @@ function html(page) {
 <html lang="${page.lang}">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+${HEAD_SECURITY}
 <title>${esc(page.title)}</title>
 <meta name="description" content="${esc(page.desc)}">
 <link rel="canonical" href="${url}">${alts}
 <meta property="og:type" content="${page.ogType || 'website'}"><meta property="og:site_name" content="Englishlink Translator"><meta property="og:title" content="${esc(page.title)}"><meta property="og:description" content="${esc(page.desc)}"><meta property="og:url" content="${url}"><meta property="og:locale" content="${L.locale}">
 ${page.ogImage ? `<meta property="og:image" content="${page.ogImage}">` : ''}<meta name="twitter:card" content="${page.ogImage ? 'summary_large_image' : 'summary'}"><meta name="theme-color" content="#1b5cff">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-${FONTS}
+<script src="/assets/frame.js"></script>
 <link rel="stylesheet" href="/assets/styles.css">
 ${page.schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s).replace(/</g, '\\u003c')}</script>`).join('\n')}
 </head>
@@ -365,10 +369,29 @@ ${chrome(page)}
 }
 
 // ---------- Tulis file ----------
-const css = read('src/styles.css');
+const heroCss = HERO.map((h, i) => `.slide.hero-bg-${i}{background-color:${h.bg}}`).join('');
+const css = read('src/styles.css') + (heroCss ? `\n${heroCss}\n` : '');
 const js = read('src/site.js');
 const favicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#1b5cff"/><text x="32" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="36" fill="#ffffff">E</text></svg>';
 const write = (rel, content) => { const f = path.join(ROOT, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, rel.endsWith('.html') && !PREVIEW ? withBase(content) : content); };
+const copyFonts = (destDir) => {
+  fs.mkdirSync(destDir, { recursive: true });
+  for (const name of fs.readdirSync(path.join(ROOT, 'src/fonts'))) {
+    if (name.endsWith('.woff2') || name === 'OFL.txt') fs.copyFileSync(path.join(ROOT, 'src/fonts', name), path.join(destDir, name));
+  }
+};
+// Panduan internal tetap di repo (dipakai penulis dan alur konten), tidak pernah masuk hasil tayang.
+const PRIVATE_DOCS = new Set(['CONTENT-GUIDE.md', 'DESIGN.md', 'KOTA-GUIDE.md', 'topics-queue.md', 'kota-queue.md']);
+const assertPublishedSafe = (dir) => {
+  const walk = (d) => {
+    for (const name of fs.readdirSync(d)) {
+      const p = path.join(d, name);
+      if (fs.statSync(p).isDirectory()) walk(p);
+      else if (PRIVATE_DOCS.has(name) || name.endsWith('.md')) throw new Error(`Dokumen internal tidak boleh ikut terbit: ${p}`);
+    }
+  };
+  walk(dir);
+};
 
 if (PREVIEW) {
   const map = {};
@@ -376,7 +399,7 @@ if (PREVIEW) {
   const start = map['/id/'];
   write('preview/index.html', `<!DOCTYPE html>
 <html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Englishlink Translator – Demo Website</title>
-${FONTS}<style>${css}</style></head><body><div id="app">${start.b}</div>
+<meta name="referrer" content="strict-origin-when-cross-origin"><style>${css}</style></head><body><div id="app">${start.b}</div>
 <script>window.__IMG=${JSON.stringify(Object.fromEntries(fs.readdirSync(path.join(ROOT, 'src/img/covers')).map((f) => [f.replace('.webp', ''), 'data:image/webp;base64,' + fs.readFileSync(path.join(ROOT, 'src/img/covers', f)).toString('base64')])))};
 function __hyd(){document.querySelectorAll('img[data-img]').forEach(function(i){var u=window.__IMG[i.getAttribute('data-img')];if(u)i.src=u;});}
 window.__PAGES=${JSON.stringify(map).replace(/</g, '\\u003c')};
@@ -384,17 +407,20 @@ window.__PAGES=${JSON.stringify(map).replace(/</g, '\\u003c')};
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href');if(h.charAt(0)==='#'){var t=document.getElementById(h.slice(1));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}return;}if(h.charAt(0)!=='/')return;e.preventDefault();var parts=h.split('#');go(parts[0],parts[1]);});})();
 __hyd();
 ${js}</script></body></html>`);
+  copyFonts(path.join(ROOT, 'preview/fonts'));
   console.log(`Preview: ${pages.length} halaman -> preview/index.html`);
 } else {
   fs.rmSync(path.join(ROOT, 'dist'), { recursive: true, force: true });
   for (const p of pages) write(`dist${p.path}index.html`, html(p));
   write('dist/assets/styles.css', css);
   write('dist/assets/site.js', js);
+  write('dist/assets/frame.js', read('src/frame.js'));
+  copyFonts(path.join(ROOT, 'dist/assets/fonts'));
   write('dist/favicon.svg', favicon);
   if (fs.existsSync(path.join(ROOT, 'static'))) fs.cpSync(path.join(ROOT, 'static'), path.join(ROOT, 'dist'), { recursive: true }); // file verifikasi dan file statis lain
   fs.cpSync(path.join(ROOT, 'src/img/covers'), path.join(ROOT, 'dist/assets/img/covers'), { recursive: true });
   for (const h of HERO) { fs.mkdirSync(path.join(ROOT, 'dist/assets/img'), { recursive: true }); fs.copyFileSync(path.join(ROOT, 'src/img', h.file), path.join(ROOT, 'dist/assets/img', h.file)); }
-  write('dist/index.html', `<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>Englishlink Translator</title><link rel="canonical" href="${SITE}/id/"><meta http-equiv="refresh" content="0; url=/id/"></head><body><a href="/id/">Englishlink Translator</a></body></html>`);
+  write('dist/index.html', `<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${HEAD_SECURITY}<title>Englishlink Translator</title><link rel="canonical" href="${SITE}/id/"><meta http-equiv="refresh" content="0; url=/id/"><script src="/assets/frame.js"></script></head><body><a href="/id/">Englishlink Translator</a></body></html>`);
   write('dist/404.html', html({ lang: 'id', key: '404', path: '/404/', title: 'Halaman tidak ditemukan | Englishlink', desc: 'Halaman tidak ditemukan.', schema: [], body: `<section class="page-hero"><div class="wrap"><h1>Halamannya nggak ketemu</h1><p class="lead">Mungkin link-nya salah ketik atau halamannya sudah dipindah.</p><div class="actions"><a class="btn btn-primary" href="/id/">Balik ke beranda</a></div></div></section>` }));
   const today = new Date().toISOString().slice(0, 10);
   write('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((p) => `<url><loc>${SITE}${p.path}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>\n`);
@@ -402,5 +428,6 @@ ${js}</script></body></html>`);
   const idL = LANGS.id;
   write('dist/llms.txt', `# Englishlink Translator\n\n> Jasa penerjemah tersumpah Inggris ⇄ Indonesia, brand dari PT. Penerjemah Tersumpah Indonesia. Caraka Tower, Jakarta Selatan. Buka Senin–Minggu 08.00–20.00 WIB. WhatsApp ${WA_DISPLAY.en}, email ${EMAIL}. Juga membantu apostille serta legalisasi notaris, kedutaan, dan kementerian.\n\n## Layanan\n${idL.services.map((s, i) => `- [${s.title}](${SITE}${idL.paths.services}${s.slug}/): ${s.short}`).join('\n')}\n\n## Jenis dokumen\n${idL.docTypes.map((d) => `- [${d.title}](${SITE}${idL.paths.docs}${d.slug}/): ${d.short}`).join('\n')}\n\n## Artikel\n${idL._posts.map((p) => `- [${p.title}](${SITE}${idL.paths.blog}${p.slug}/): ${p.description}`).join('\n')}${idL._cities && idL._cities.length ? `\n\n## Area layanan\n${idL._cities.map((c) => `- [${c.title}](${SITE}${idL.paths.area}${c.slug}/): ${c.description}`).join('\n')}` : ''}\n\n## Info\n- [Cara kerja](${SITE}${idL.paths.how})\n- [FAQ](${SITE}${idL.paths.faq})\n- [Tentang](${SITE}${idL.paths.about})\n- [English version](${SITE}/en/)\n`);
   if (fs.existsSync(path.join(ROOT, 'CNAME'))) fs.copyFileSync(path.join(ROOT, 'CNAME'), path.join(ROOT, 'dist/CNAME'));
+  assertPublishedSafe(path.join(ROOT, 'dist'));
   console.log(`Build: ${pages.length} halaman -> dist/`);
 }
