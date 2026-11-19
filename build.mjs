@@ -68,7 +68,7 @@ const photoAttr = (n) => (HERO[n] ? ` has-photo${HERO[n].light ? ' on-light' : '
 const BLANK = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 const coverImg = (name, alt = '', cls = 'cover') => `<img class="${cls}" ${PREVIEW ? `src="${BLANK}" data-img="${name}"` : `src="/assets/img/covers/${name}.webp"`} alt="${esc(alt)}" width="800" height="450" loading="lazy">`;
 const DEFAULT_COVER = 'periksa';
-const DOC_COVERS = ['stempel', 'ijazah', 'svc-5', 'svc-2', 'svc-4', 'timbangan', 'periksa'];
+const DOC_COVERS = ['stempel', 'ijazah', 'svc-5', 'nikah', 'svc-4', 'timbangan', 'periksa'];
 // Cover bertulisan: panel warna + judul singkat + ilustrasi. Dipakai artikel dan halaman kota.
 const textCover = (key, kicker, text, img) => { let h = 0; for (const ch of key) h = (h * 31 + ch.charCodeAt(0)) % 997; return `<div class="tcover tc${h % 4}${text.length > 38 ? ' long' : ''}"><div class="tc-text"><span class="tc-kicker">${esc(kicker)}</span><strong>${esc(text)}</strong><span class="tc-brand">englishlink.co.id</span></div>${coverImg(img, '', 'tc-img')}</div>`; };
 
@@ -173,7 +173,7 @@ for (const L of Object.values(LANGS)) {
 <section class="trust"><div class="wrap trust-in"><p>${esc(H.trustLabel)}</p><ul>${[['bank', H.price], ['clock', U.hours], ['pin', U.address], ['phone', H.facts[2]]].map(([i, t]) => `<li>${ico(i)}<span>${esc(t)}</span></li>`).join('')}</ul></div></section>
 <section class="sec"><div class="wrap">${sectionHead(H.servicesTitle, H.servicesLead)}${cards(L, L.services.map((s, i) => svcCard(i)), 'four')}</div></section>
 <section class="sec"><div class="wrap"><div class="extra"><div><h3>${esc(H.extraTitle)}</h3><p>${esc(H.extraText)}</p></div>${btnWa(U.waCta, H.extraWa, 'btn btn-amber')}</div></div></section>
-<section class="sec sec-soft"><div class="wrap">${sectionHead(H.whyTitle, H.whyLead)}<div class="why-grid"><div class="why-photo">${coverImg('orang-2', H.photoAlt[1], 'photo')}<span class="chip c0">${ico('check')}${esc(H.why[1].t)}</span><span class="chip c2">${ico('clock')}${esc(H.why[2].t)}</span></div><ul class="why">${H.why.map((w, n) => `<li><span class="ico">${ico(['swap', 'check', 'clock', 'phone'][n])}</span><h3>${esc(w.t)}</h3><p>${esc(w.d)}</p></li>`).join('')}</ul></div></div></section>
+<section class="sec sec-soft"><div class="wrap">${sectionHead(H.whyTitle, H.whyLead)}<div class="why-grid"><div class="why-photo">${coverImg('foto-pasangan', H.photoAlt2[0], 'photo land')}<span class="chip c0">${ico('check')}${esc(H.why[1].t)}</span><span class="chip c2">${ico('clock')}${esc(H.why[2].t)}</span></div><ul class="why">${H.why.map((w, n) => `<li><span class="ico">${ico(['swap', 'check', 'clock', 'phone'][n])}</span><h3>${esc(w.t)}</h3><p>${esc(w.d)}</p></li>`).join('')}</ul></div></div></section>
 <section class="sec"><div class="wrap">${sectionHead(H.stepsTitle, H.stepsLead)}${stepsList(L.steps)}</div></section>
 <section class="sec sec-soft"><div class="wrap">${sectionHead(H.docsTitle, H.docsLead)}${cards(L, L.docTypes.map((d, i) => docCard(i)), 'four')}</div></section>
 ${posts.length ? `<section class="sec"><div class="wrap">${sectionHead(H.blogTitle, '', { href: P.blog, label: U.seeAll })}${postCards(L, posts.slice(0, 3))}</div></section>` : ''}
@@ -182,7 +182,7 @@ ${quoteForm(L)}` });
 
   // Layanan
   let crumbs = [homeCrumb, { label: U.nav.services, href: P.services }];
-  add({ lang, key: 'services', path: P.services, ...L.meta.services, schema: [crumbSchema(crumbs)], body: `${pageHero(L, crumbs, L.servicesPage.h1, L.servicesPage.lead)}
+  add({ lang, key: 'services', path: P.services, ...L.meta.services, schema: [crumbSchema(crumbs)], body: `${pageHero(L, crumbs, L.servicesPage.h1, L.servicesPage.lead, '', 'foto-bisnis')}
 <section class="sec"><div class="wrap">${cards(L, L.services.map((s, i) => svcCard(i)))}
 <div class="extra"><div><h3>${esc(L.home.extraTitle)}</h3><p>${esc(L.home.extraText)}</p></div>${btnWa(U.waCta, L.home.extraWa, 'btn btn-amber')}</div></div></section>${ctaBand(L)}` });
   L.services.forEach((s, i) => {
@@ -222,14 +222,14 @@ ${quoteForm(L)}` });
   add({ lang, key: 'how', path: P.how, ...L.meta.how, schema: [crumbSchema(crumbs), { '@context': 'https://schema.org', '@type': 'HowTo', name: L.howPage.h1, step: L.steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.t, text: s.d })) }],
     body: `${pageHero(L, crumbs, L.howPage.h1, L.howPage.lead)}
 <section class="sec"><div class="wrap">${stepsList(L.steps)}</div></section>
-<section class="sec sec-tint"><div class="wrap two"><div><h2>${esc(L.prepareTitle)}</h2>${ticks(L.prepare)}</div><div>${coverImg('orang-3', L.home.photoAlt[2], 'photo wide')}<div class="note"><h3>${esc(U.sendTitle)}</h3><p>${esc(U.sendText)}</p></div></div></div></section>${quoteForm(L)}` });
+<section class="sec sec-tint"><div class="wrap two"><div><h2>${esc(L.prepareTitle)}</h2>${ticks(L.prepare)}</div><div>${coverImg('foto-keluarga', L.home.photoAlt2[2], 'photo wide')}<div class="note"><h3>${esc(U.sendTitle)}</h3><p>${esc(U.sendText)}</p></div></div></div></section>${quoteForm(L)}` });
 
   // Tentang
   crumbs = [homeCrumb, { label: U.nav.about, href: P.about }];
   const A = L.about;
   add({ lang, key: 'about', path: P.about, ...L.meta.about, schema: [crumbSchema(crumbs), orgSchema(L)], body: `${pageHero(L, crumbs, A.h1, A.lead)}
 <section class="sec"><div class="wrap two"><div class="prose">${A.body.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
-<div>${coverImg('orang-1', L.home.photoAlt[0], 'photo wide')}<div class="idcard"><h2>${esc(A.identityTitle)}</h2><dl>${A.identity.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl></div></div></div></section>
+<div>${coverImg('foto-admin', L.home.photoAlt2[1], 'photo wide')}<div class="idcard"><h2>${esc(A.identityTitle)}</h2><dl>${A.identity.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl></div></div></div></section>
 <section class="sec sec-tint"><div class="wrap">${sectionHead(A.standardsTitle)}${points(A.standards)}</div></section>
 <section class="sec"><div class="wrap narrow"><h2>${esc(A.privacyTitle)}</h2><p>${esc(A.privacyText)} <a href="${P.privacy}">${esc(U.privacy)}</a>.</p></div></section>${ctaBand(L)}` });
 
@@ -241,7 +241,7 @@ ${quoteForm(L)}` });
   // Kontak
   crumbs = [homeCrumb, { label: U.nav.contact, href: P.contact }];
   const C = L.contact;
-  add({ lang, key: 'contact', path: P.contact, ...L.meta.contact, schema: [crumbSchema(crumbs), orgSchema(L)], body: `${pageHero(L, crumbs, C.h1, C.lead, `<div class="actions">${btnWa(U.waCta, C.waMsg)}</div>`)}
+  add({ lang, key: 'contact', path: P.contact, ...L.meta.contact, schema: [crumbSchema(crumbs), orgSchema(L)], body: `${pageHero(L, crumbs, C.h1, C.lead, `<div class="actions">${btnWa(U.waCta, C.waMsg)}</div>`, 'foto-admin')}
 <section class="sec"><div class="wrap"><dl class="contact-grid">
 <div><dt>${esc(C.waLabel)}</dt><dd><a href="${wa(C.waMsg)}" rel="noopener">${WA_DISPLAY[lang]}</a></dd></div>
 <div><dt>${esc(C.emailLabel)}</dt><dd><a href="mailto:${EMAIL}">${EMAIL}</a></dd></div>

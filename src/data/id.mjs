@@ -72,6 +72,7 @@ export default {
     whyLead: 'Kami bantu urus terjemahan dengan cara yang jelas dan gampang diikuti.',
     photoAlt: ['Mahasiswi tersenyum sambil memegang dokumen dan laptop', 'Wisudawan memegang map ijazah', 'Perempuan membawa paspor dan koper siap berangkat ke luar negeri'],
     price: 'Harga mulai Rp75.000',
+    photoAlt2: ['Pasangan memeriksa dokumen dan paspor bersama', 'Admin Englishlink melayani lewat chat', 'Ibu dan anak menyiapkan dokumen perjalanan'],
     trustLabel: 'Brand resmi dari PT. Penerjemah Tersumpah Indonesia',
     slides: [
       { tag: 'Kuliah & Beasiswa', title: 'Ijazah dan transkripmu, siap dibaca kampus impian.', text: 'Terjemahan dokumen akademik Indonesia ke Inggris. Sebutkan deadline pendaftaranmu, kami atur jadwalnya.', service: 3, chips: ['Ijazah', 'Transkrip', 'SKL'] },

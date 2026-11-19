@@ -6,7 +6,7 @@ keywords: penerjemah tersumpah online, pesan terjemahan online, jasa translate d
 format: panduan
 kicker: Panduan
 coverText: Pesan terjemahan tanpa keluar rumah
-cover: svc-6
+cover: chat
 answer: Memesan terjemahan dokumen secara online cukup dengan mengirim foto atau scan dokumen lewat chat, menerima estimasi biaya dan waktu, menyetujui penawaran, lalu menerima hasil dalam bentuk digital atau cetak. Kuncinya ada di kualitas file dan kejelasan soal tujuan dokumen.
 ---
 

@@ -105,6 +105,10 @@ Pilih satu yang paling cocok dengan isi artikel, tulis namanya di `cover:`. Kala
 | timbangan, timbangan-2 | Timbangan dua dokumen | Perbandingan, pilihan, aturan |
 | ijazah | Ijazah berbingkai dan pensil | Ijazah, transkrip, sekolah |
 | periksa | Kaca pembesar, kalender, checklist | Tips, cek ulang, persiapan |
+| apostille | Bola dunia berpita dan dokumen bersegel | Apostille, legalisasi, dokumen ke luar negeri |
+| chat | HP dengan balon percakapan | Pesan online, konsultasi, tanya jawab |
+| tenggat | Kalender dan jam pasir | Tenggat, jadwal, kapan mulai mengurus |
+| nikah | Cincin dan sertifikat | Dokumen pernikahan, pasangan campuran |
 | svc-0 | Kamus ke dokumen | Inggris ke Indonesia |
 | svc-1 | Dokumen ke bola dunia | Indonesia ke Inggris, luar negeri |
 | svc-2 | Sertifikat bersegel dan stempel | Dokumen resmi, akta |

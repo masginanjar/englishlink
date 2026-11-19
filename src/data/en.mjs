@@ -71,6 +71,7 @@ export default {
     whyLead: 'We handle your translation in a way that is clear and easy to follow.',
     photoAlt: ['Smiling student holding a document and a laptop', 'Graduate holding a diploma folder', 'Woman with a passport and suitcase ready to go abroad'],
     price: 'Prices from Rp75,000',
+    photoAlt2: ['A couple checking documents and a passport together', 'An Englishlink admin assisting by chat', 'A mother and child preparing travel documents'],
     trustLabel: 'An official brand of PT. Penerjemah Tersumpah Indonesia',
     slides: [
       { tag: 'Study & Scholarships', title: 'Your diploma and transcript, ready for your dream campus.', text: 'Academic documents translated from Indonesian to English. Tell us your application deadline and we will plan around it.', service: 3, chips: ['Diploma', 'Transcript', 'Letters'] },

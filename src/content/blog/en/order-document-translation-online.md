@@ -7,7 +7,7 @@ keywords: online sworn translation Indonesia, order document translation online,
 format: panduan
 kicker: Guide
 coverText: Order a translation from home
-cover: svc-6
+cover: chat
 answer: Ordering a document translation online means sending a photo or scan by chat, receiving a cost and time estimate, approving the quote, and getting the result digitally or in print. What makes it smooth is good file quality and being clear about what the document is for.
 ---
 
