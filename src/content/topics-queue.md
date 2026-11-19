@@ -6,9 +6,9 @@
 - [x] Panduan Menerjemahkan Ijazah dan Transkrip Nilai
 - [x] Apakah Dokumen Scan atau Foto Bisa Diterjemahkan?
 - [x] Tips Memeriksa Nama, Tanggal, dan Nomor pada Hasil Terjemahan
+- [x] Apakah Dokumen Berbahasa Inggris Perlu Diterjemahkan ke Bahasa Indonesia?
 
 ## Berikutnya
-- [ ] Apakah Dokumen Berbahasa Inggris Perlu Diterjemahkan ke Bahasa Indonesia?
 - [ ] Dokumen Apa Saja yang Umumnya Memerlukan Terjemahan Tersumpah?
 - [ ] Bagaimana Cara Memesan Terjemahan Tersumpah secara Online?
 - [ ] Panduan Terjemahan Akta Kelahiran untuk Keperluan Administrasi
