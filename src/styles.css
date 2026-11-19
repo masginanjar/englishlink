@@ -311,6 +311,17 @@ dd{margin:0;font-weight:700}
 .social.dark a{border-color:var(--line);color:var(--blue-d)}
 .social.dark a:hover{background:var(--soft)}
 
+/* Popup status admin (mengikuti jam layanan 08.00–20.00 WIB) */
+.online-pop{position:fixed;right:1rem;bottom:1rem;z-index:45;display:flex;align-items:center;gap:.8rem;max-width:400px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 40px rgba(13,27,61,.2);padding:.9rem 2.2rem .9rem 1rem;animation:pop .35s ease-out}
+.online-pop[hidden]{display:none}
+.online-pop strong{display:block;font-size:.95rem;line-height:1.3}
+.online-pop p{margin:.1rem 0 0;font-size:.86rem;color:var(--muted);line-height:1.4}
+.online-pop .dot{flex:none;width:12px;height:12px;border-radius:50%;background:#9aa3b5}
+.online-pop.is-on .dot{background:var(--green);box-shadow:0 0 0 4px rgba(31,170,89,.2)}
+.online-pop .btn{flex:none}
+.online-pop [data-online-close]{position:absolute;right:.3rem;top:.2rem;width:36px;height:36px;border:0;background:none;font-size:1.3rem;line-height:1;color:var(--muted);cursor:pointer;border-radius:50%}
+@keyframes pop{from{transform:translateY(16px);opacity:0}to{transform:none;opacity:1}}
+
 /* Footer */
 .site-footer{background:var(--navy);color:#cfd9f5;padding:3rem 0 6rem}
 .foot{display:grid;grid-template-columns:1.4fr 1fr 1.2fr;gap:2rem}
@@ -367,6 +378,7 @@ dd{margin:0;font-weight:700}
   .band .btn,.extra .btn{width:100%}
   .trust-in{flex-direction:column;align-items:flex-start;gap:1rem}
   .trust ul{flex-direction:column;gap:.6rem}
+  .online-pop{left:1rem;right:1rem;max-width:none;bottom:calc(4.8rem + env(safe-area-inset-bottom,0px))}
   .wa-float{display:inline-flex;position:fixed;left:1rem;right:1rem;bottom:calc(.8rem + env(safe-area-inset-bottom,0px));z-index:40;align-items:center;justify-content:center;gap:.55rem;min-height:52px;border-radius:16px;background:var(--green);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 8px 24px rgba(13,27,61,.3)}
 }
 @media (max-width:520px){

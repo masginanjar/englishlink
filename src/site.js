@@ -60,6 +60,26 @@
     b.parentNode.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     document.querySelectorAll('.posts li').forEach(function (li) { li.hidden = !!k && li.getAttribute('data-k') !== k; });
   });
+  // Popup status admin: jujur mengikuti jam layanan 08.00–20.00 WIB, bukan status palsu
+  var popClosed = false;
+  try { popClosed = sessionStorage.getItem('el-pop') === '1'; } catch (err) {}
+  function showPop() {
+    var pop = document.querySelector('[data-online]');
+    if (!pop || popClosed || pop.getAttribute('data-ready')) return;
+    var h = (new Date().getUTCHours() + 7) % 24;
+    var on = h >= 8 && h < 20;
+    pop.querySelector('[data-online-text]').textContent = pop.getAttribute(on ? 'data-on' : 'data-off');
+    pop.classList.toggle('is-on', on);
+    pop.setAttribute('data-ready', '1');
+    pop.hidden = false;
+  }
+  setTimeout(function () { showPop(); setInterval(showPop, 1500); }, 4000);
+  document.addEventListener('click', function (e) {
+    if (!(e.target.closest && e.target.closest('[data-online-close]'))) return;
+    popClosed = true;
+    try { sessionStorage.setItem('el-pop', '1'); } catch (err) {}
+    document.querySelectorAll('[data-online]').forEach(function (p) { p.hidden = true; });
+  });
   document.addEventListener('submit', function (e) {
     if (e.target.matches && e.target.matches('[data-wa-form]')) e.preventDefault();
   });

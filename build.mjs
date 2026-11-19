@@ -325,7 +325,8 @@ function chrome(page) {
   <div><h2>${esc(U.footerExplore)}</h2><ul>${navItems.map((k) => `<li><a href="${P[k]}">${esc(U.nav[k])}</a></li>`).join('')}${P.area ? `<li><a href="${P.area}">${esc(U.area)}</a></li>` : ''}<li><a href="${P.privacy}">${esc(U.privacy)}</a></li></ul></div>
   <div><h2>${esc(U.footerContact)}</h2><ul><li><a href="${wa(U.form.fallback)}" rel="noopener">WhatsApp ${WA_DISPLAY[page.lang]}</a></li><li><a href="mailto:${EMAIL}">${EMAIL}</a></li><li>${esc(U.address)}</li><li>${esc(U.hours)}</li></ul>${socialLinks()}</div>
 </div><div class="wrap copy">© ${new Date().getFullYear()} Englishlink Translator · PT. Penerjemah Tersumpah Indonesia</div></footer>
-<a class="wa-float" href="${wa(U.form.fallback)}" rel="noopener">${waIcon}<span>${esc(U.waCta)}</span></a>`;
+<a class="wa-float" href="${wa(U.form.fallback)}" rel="noopener">${waIcon}<span>${esc(U.waCta)}</span></a>
+<div class="online-pop" data-online hidden data-on="${esc(U.online.on)}" data-off="${esc(U.online.off)}" role="status"><span class="dot"></span><div><strong>${esc(U.online.hi)}</strong><p data-online-text></p></div><a class="btn btn-sm btn-wa" href="${wa(U.form.fallback)}" rel="noopener">${waIcon}<span>Chat</span></a><button type="button" data-online-close aria-label="${esc(U.online.close)}">×</button></div>`;
   return `${header}<main id="main">${page.body}</main>${footer}`;
 }
 const FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">';

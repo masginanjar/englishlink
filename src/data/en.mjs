@@ -9,6 +9,7 @@ export default {
   ui: {
     nav: { services: 'Services', docs: 'Documents', how: 'How It Works', blog: 'Articles', about: 'About', faq: 'FAQ', contact: 'Contact' },
     skip: 'Skip to content',
+    online: { hi: 'Hi, need a hand?', on: 'Our admin is online now. Message us and we will review your document.', off: 'Our admin is offline. We reopen at 08:00 WIB, leave a message meanwhile.', close: 'Close' },
     area: 'Service areas', kicker: 'Guide',
     menu: 'Menu',
     waCta: 'Chat on WhatsApp',

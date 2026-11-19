@@ -9,6 +9,7 @@ export default {
   ui: {
     nav: { services: 'Layanan', docs: 'Jenis Dokumen', how: 'Cara Kerja', blog: 'Artikel', about: 'Tentang', faq: 'FAQ', contact: 'Kontak' },
     skip: 'Lompat ke konten',
+    online: { hi: 'Hai, ada yang bisa dibantu?', on: 'Admin sedang online sekarang. Chat aja, kami cek dokumenmu.', off: 'Admin sedang offline. Kami buka lagi pukul 08.00 WIB, tinggalkan pesan dulu ya.', close: 'Tutup' },
     area: 'Area layanan', kicker: 'Panduan', allTopics: 'Semua',
     menu: 'Menu',
     waCta: 'Chat WhatsApp',
