@@ -4,9 +4,9 @@ Tanda: `[x]` sudah terbit, `[-]` dilewati (beri alasan singkat).
 
 ## Sudah terbit
 - [x] Jakarta Selatan
+- [x] Jakarta Pusat
 
 ## Berikutnya
-- [ ] Jakarta Pusat
 - [ ] Jakarta Barat
 - [ ] Jakarta Timur
 - [ ] Jakarta Utara
