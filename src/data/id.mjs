@@ -31,7 +31,7 @@ export default {
     reqNote: 'Catatan: persyaratan bisa beda di tiap instansi, kampus, atau negara tujuan. Kalau kamu punya daftar syarat dari mereka, kirim sekalian biar hasilnya pas.',
     relatedServices: 'Layanan terkait', otherDocs: 'Jenis dokumen lain',
     published: 'Terbit', updated: 'Diperbarui', by: 'Ditulis oleh', author: 'Tim Englishlink Translator', minRead: 'menit baca',
-    shortAnswer: 'Jawaban singkat', moreArticles: 'Artikel lainnya',
+    shortAnswer: 'Jawaban singkat', moreArticles: 'Artikel terkait', searchPosts: 'Cari artikel', searchPh: 'Cari topik, misalnya ijazah atau beasiswa', noPosts: 'Belum ada artikel yang cocok. Coba kata lain atau pilih Semua.', category: 'Kategori',
     form: {
       title: 'Minta estimasi dalam *1 menit*',
       lead: 'Isi singkat, lalu lanjut ke WhatsApp. Formulir ini tidak menyimpan data apa pun, isinya langsung jadi pesan chat.',

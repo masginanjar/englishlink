@@ -129,7 +129,7 @@ function quoteForm(L) {
   </form></div></section>`;
 }
 const ctaBand = (L) => `<section class="sec"><div class="wrap"><div class="band"><div><h2>${esc(L.ui.ctaBand.title)}</h2><p>${esc(L.ui.ctaBand.text)}</p></div>${btnWa(L.ui.waCta, L.ui.form.fallback, 'btn btn-white')}</div></div></section>`;
-const postCards = (L, posts) => `<ul class="posts">${posts.map((p) => `<li data-k="${esc(p.kicker || L.ui.kicker)}"><a class="post-card" href="${L.paths.blog}${p.slug}/">${textCover(p.slug, p.kicker || L.ui.kicker, p.coverText || p.title, p.cover)}<time datetime="${p.date}">${fmtDate(p.date, L.lang)}</time><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><span class="more">${esc(L.ui.readMore)} ${arrow}</span></a></li>`).join('')}</ul>`;
+const postCards = (L, posts) => `<ul class="posts">${posts.map((p) => `<li data-k="${esc(p.kicker || L.ui.kicker)}" data-t="${esc(`${p.title} ${p.description} ${p.keywords || ''}`.toLowerCase())}"><a class="post-card" href="${L.paths.blog}${p.slug}/">${textCover(p.slug, p.kicker || L.ui.kicker, p.coverText || p.title, p.cover)}<time datetime="${p.date}">${fmtDate(p.date, L.lang)}</time><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><span class="more">${esc(L.ui.readMore)} ${arrow}</span></a></li>`).join('')}</ul>`;
 
 // Ulasan Google Maps 247 Sworn Translator Jakarta: selalu sebut sumbernya dan tautkan ke halaman aslinya.
 const MAPS_247 = 'https://www.google.com/maps/place/?q=place_id:ChIJgVCamAfzaS4Ryb9y13zdZuA';
@@ -274,7 +274,7 @@ ${groupProof(L)}
       const cr = [...crumbs, { label: c.city || c.title, href }];
       const schema = [crumbSchema(cr), { '@context': 'https://schema.org', '@type': 'Service', name: c.title, description: c.description, serviceType: 'Sworn translation', provider: { '@id': `${SITE}/#org` }, areaServed: { '@type': 'City', name: c.city || c.title }, url: SITE + href }];
       if (c.faq.length) schema.push(faqSchema(c.faq));
-      add({ lang, key: `city:${c.slug}`, path: href, title: c.title.length > 50 ? c.title : `${c.title} | Englishlink`, desc: c.description, schema, body: `<article class="post"><div class="wrap narrow">${crumbsHtml(cr)}
+      add({ lang, key: `city:${c.slug}`, path: href, modified: c.updated, title: c.title.length > 50 ? c.title : `${c.title} | Englishlink`, desc: c.description, schema, body: `<article class="post"><div class="wrap narrow">${crumbsHtml(cr)}
 <h1>${esc(c.title)}</h1>
 <p class="post-meta">${esc(U.by)} <a href="${P.about}">${esc(U.author)}</a> · ${esc(U.updated)} <time datetime="${c.updated}">${fmtDate(c.updated, lang)}</time></p>
 <figure class="cover-fig">${textCover(c.slug, U.area, `${L.areaPage.coverPrefix} ${c.city || ''}`, c.cover)}</figure>
@@ -290,22 +290,24 @@ ${groupProof(L)}
   if (P.blog) {
     crumbs = [homeCrumb, { label: U.nav.blog, href: P.blog }];
     add({ lang, key: 'blog', path: P.blog, ...L.meta.blog, schema: [crumbSchema(crumbs)], body: `${pageHero(L, crumbs, L.blogPage.h1, L.blogPage.lead)}
-<section class="sec"><div class="wrap"><div class="filters" data-filter>${['', ...new Set(posts.map((x) => x.kicker || U.kicker))].map((k, n) => `<button type="button" data-k="${esc(k)}"${n ? '' : ' class="on"'}>${esc(k || U.allTopics)}</button>`).join('')}</div>${postCards(L, posts)}</div></section>${ctaBand(L)}` });
+<section class="sec"><div class="wrap"><div class="post-search"><label class="sr-only" for="post-q">${esc(U.searchPosts)}</label><input id="post-q" type="search" data-post-search placeholder="${esc(U.searchPh)}" autocomplete="off"></div><div class="filters" data-filter>${['', ...new Set(posts.map((x) => x.kicker || U.kicker))].map((k, n) => `<button type="button" data-k="${esc(k)}"${n ? '' : ' class="on"'}>${esc(k || U.allTopics)}</button>`).join('')}</div>${postCards(L, posts)}<p class="no-posts" data-no-posts hidden>${esc(U.noPosts)}</p></div></section>${ctaBand(L)}` });
     for (const p of posts) {
       const href = `${P.blog}${p.slug}/`;
       const c = [...crumbs, { label: p.title, href }];
       const schema = [crumbSchema(c), { '@context': 'https://schema.org', '@type': 'Article', headline: p.title, description: p.description, datePublished: p.date, dateModified: p.updated, inLanguage: lang, image: `${SITE}/assets/img/covers/${p.cover}.webp`, mainEntityOfPage: SITE + href, keywords: p.keywords || '',
         author: { '@type': 'Organization', name: U.author, url: SITE + P.about }, publisher: { '@id': `${SITE}/#org`, '@type': 'Organization', name: 'Englishlink Translator' } }];
       if (p.faq.length) schema.push(faqSchema(p.faq));
-      add({ lang, key: `post:${p.ref || p.slug}`, path: href, title: p.title.length > 50 ? p.title : `${p.title} | Englishlink`, desc: p.description, ogType: 'article', ogImage: `${SITE}/assets/img/covers/${p.cover}.webp`, schema, body: `<article class="post"><div class="wrap narrow">${crumbsHtml(c)}
+      const cat = p.kicker || U.kicker;
+      const related = [...posts.filter((o) => o.slug !== p.slug && (o.kicker || U.kicker) === cat), ...posts.filter((o) => o.slug !== p.slug && (o.kicker || U.kicker) !== cat)].slice(0, 3);
+      add({ lang, key: `post:${p.ref || p.slug}`, path: href, published: p.date, modified: p.updated, section: cat, title: p.title.length > 50 ? p.title : `${p.title} | Englishlink`, desc: p.description, ogType: 'article', ogImage: `${SITE}/assets/img/covers/${p.cover}.webp`, schema, body: `<article class="post"><div class="wrap narrow">${crumbsHtml(c)}
 <h1>${esc(p.title)}</h1>
-<p class="post-meta">${esc(U.by)} <a href="${P.about}">${esc(U.author)}</a> · ${esc(U.published)} <time datetime="${p.date}">${fmtDate(p.date, lang)}</time>${p.updated !== p.date ? ` · ${esc(U.updated)} <time datetime="${p.updated}">${fmtDate(p.updated, lang)}</time>` : ''} · ${p.minutes} ${esc(U.minRead)}</p>
+<p class="post-meta"><a class="cat-chip" href="${P.blog}#k=${encodeURIComponent(cat)}"><span class="sr-only">${esc(U.category)}: </span>${esc(cat)}</a> ${esc(U.by)} <a href="${P.about}">${esc(U.author)}</a> · ${esc(U.published)} <time datetime="${p.date}">${fmtDate(p.date, lang)}</time>${p.updated !== p.date ? ` · ${esc(U.updated)} <time datetime="${p.updated}">${fmtDate(p.updated, lang)}</time>` : ''} · ${p.minutes} ${esc(U.minRead)}</p>
 <figure class="cover-fig">${textCover(p.slug, p.kicker || U.kicker, p.coverText || p.title, p.cover)}</figure>
 <div class="answer"><strong>${esc(U.shortAnswer)}</strong><p>${esc(p.answer)}</p></div>
 <div class="prose">${p.html}</div>
 <div class="band small"><div><h2>${esc(U.ctaBand.title)}</h2><p>${esc(U.ctaBand.text)}</p></div>${btnWa(U.waCta, U.form.fallback, 'btn btn-white')}</div>
 </div></article>
-<section class="sec sec-tint"><div class="wrap">${sectionHead(U.moreArticles, '', { href: P.blog, label: U.seeAll })}${postCards(L, posts.filter((o) => o.slug !== p.slug).slice(0, 3))}</div></section>` });
+<section class="sec sec-tint"><div class="wrap">${sectionHead(U.moreArticles, '', { href: P.blog, label: U.seeAll })}${postCards(L, related)}</div></section>` });
     }
   }
 }
@@ -355,7 +357,7 @@ ${HEAD_SECURITY}
 <meta name="description" content="${esc(page.desc)}">
 <link rel="canonical" href="${url}">${alts}
 <meta property="og:type" content="${page.ogType || 'website'}"><meta property="og:site_name" content="Englishlink Translator"><meta property="og:title" content="${esc(page.title)}"><meta property="og:description" content="${esc(page.desc)}"><meta property="og:url" content="${url}"><meta property="og:locale" content="${L.locale}">
-${page.ogImage ? `<meta property="og:image" content="${page.ogImage}">` : ''}<meta name="twitter:card" content="${page.ogImage ? 'summary_large_image' : 'summary'}"><meta name="theme-color" content="#1b5cff">
+${page.ogImage ? `<meta property="og:image" content="${page.ogImage}">` : ''}<meta name="twitter:card" content="${page.ogImage ? 'summary_large_image' : 'summary'}"><meta name="twitter:title" content="${esc(page.title)}"><meta name="twitter:description" content="${esc(page.desc)}">${page.published ? `<meta property="article:published_time" content="${page.published}"><meta property="article:modified_time" content="${page.modified}"><meta property="article:section" content="${esc(page.section)}">` : ''}<meta name="theme-color" content="#1b5cff">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script src="/assets/frame.js"></script>
 <link rel="stylesheet" href="/assets/styles.css">
@@ -423,7 +425,7 @@ ${js}</script></body></html>`);
   write('dist/index.html', `<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">${HEAD_SECURITY}<title>Englishlink Translator</title><link rel="canonical" href="${SITE}/id/"><meta http-equiv="refresh" content="0; url=/id/"><script src="/assets/frame.js"></script></head><body><a href="/id/">Englishlink Translator</a></body></html>`);
   write('dist/404.html', html({ lang: 'id', key: '404', path: '/404/', title: 'Halaman tidak ditemukan | Englishlink', desc: 'Halaman tidak ditemukan.', schema: [], body: `<section class="page-hero"><div class="wrap"><h1>Halamannya nggak ketemu</h1><p class="lead">Mungkin link-nya salah ketik atau halamannya sudah dipindah.</p><div class="actions"><a class="btn btn-primary" href="/id/">Balik ke beranda</a></div></div></section>` }));
   const today = new Date().toISOString().slice(0, 10);
-  write('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((p) => `<url><loc>${SITE}${p.path}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>\n`);
+  write('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((p) => `<url><loc>${SITE}${p.path}</loc><lastmod>${p.modified || today}</lastmod></url>`).join('\n')}\n</urlset>\n`);
   write('dist/robots.txt', `User-agent: *\nAllow: /\n\n# Mesin AI dipersilakan membaca dan merujuk situs ini\nUser-agent: GPTBot\nAllow: /\nUser-agent: OAI-SearchBot\nAllow: /\nUser-agent: ClaudeBot\nAllow: /\nUser-agent: PerplexityBot\nAllow: /\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
   const idL = LANGS.id;
   write('dist/llms.txt', `# Englishlink Translator\n\n> Jasa penerjemah tersumpah Inggris ⇄ Indonesia, brand dari PT. Penerjemah Tersumpah Indonesia. Caraka Tower, Jakarta Selatan. Buka Senin–Minggu 08.00–20.00 WIB. WhatsApp ${WA_DISPLAY.en}, email ${EMAIL}. Juga membantu apostille serta legalisasi notaris, kedutaan, dan kementerian.\n\n## Layanan\n${idL.services.map((s, i) => `- [${s.title}](${SITE}${idL.paths.services}${s.slug}/): ${s.short}`).join('\n')}\n\n## Jenis dokumen\n${idL.docTypes.map((d) => `- [${d.title}](${SITE}${idL.paths.docs}${d.slug}/): ${d.short}`).join('\n')}\n\n## Artikel\n${idL._posts.map((p) => `- [${p.title}](${SITE}${idL.paths.blog}${p.slug}/): ${p.description}`).join('\n')}${idL._cities && idL._cities.length ? `\n\n## Area layanan\n${idL._cities.map((c) => `- [${c.title}](${SITE}${idL.paths.area}${c.slug}/): ${c.description}`).join('\n')}` : ''}\n\n## Info\n- [Cara kerja](${SITE}${idL.paths.how})\n- [FAQ](${SITE}${idL.paths.faq})\n- [Tentang](${SITE}${idL.paths.about})\n- [English version](${SITE}/en/)\n`);

@@ -31,7 +31,7 @@ export default {
     reqNote: 'Note: requirements differ between institutions, universities and countries. If they gave you a checklist, send it along so the result fits.',
     relatedServices: 'Related services', otherDocs: 'Other document types',
     published: 'Published', updated: 'Updated', by: 'Written by', author: 'Englishlink Translator Team', minRead: 'min read',
-    shortAnswer: 'Short answer', moreArticles: 'More articles',
+    shortAnswer: 'Short answer', moreArticles: 'Related articles', searchPosts: 'Search articles', searchPh: 'Search a topic, e.g. diploma or scholarship', noPosts: 'No matching articles yet. Try another word or choose All.', category: 'Category',
     form: {
       title: 'Get a quote in *1 minute*',
       lead: 'Fill this in, then continue on WhatsApp. This form stores nothing. It simply turns your answers into a chat message.',

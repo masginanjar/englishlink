@@ -53,13 +53,38 @@
     var n = Math.round(t.scrollLeft / t.clientWidth);
     document.querySelectorAll('[data-dot]').forEach(function (d, i) { d.classList.toggle('on', i === n); });
   }, true);
+  // Daftar artikel: filter kategori + pencarian, bisa dibuka langsung lewat #k=Kategori
+  var curK = '';
+  function applyPosts() {
+    var inp = document.querySelector('[data-post-search]');
+    var q = inp ? inp.value.trim().toLowerCase() : '';
+    var shown = 0;
+    document.querySelectorAll('.posts li').forEach(function (li) {
+      if (!li.closest('.sec') || !li.closest('.sec').querySelector('[data-filter]')) return;
+      var ok = (!curK || li.getAttribute('data-k') === curK) && (!q || (li.getAttribute('data-t') || '').indexOf(q) > -1);
+      li.hidden = !ok; if (ok) shown++;
+    });
+    var none = document.querySelector('[data-no-posts]');
+    if (none) none.hidden = shown > 0;
+  }
+  function setK(k) {
+    curK = k || '';
+    document.querySelectorAll('[data-filter] button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-k') === curK); });
+    applyPosts();
+  }
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('[data-filter] button');
-    if (!b) return;
-    var k = b.getAttribute('data-k');
-    b.parentNode.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
-    document.querySelectorAll('.posts li').forEach(function (li) { li.hidden = !!k && li.getAttribute('data-k') !== k; });
+    if (b) setK(b.getAttribute('data-k'));
   });
+  document.addEventListener('input', function (e) {
+    if (e.target.matches && e.target.matches('[data-post-search]')) applyPosts();
+  });
+  function fromHash() {
+    var m = /^#k=(.+)$/.exec(location.hash || '');
+    if (m && document.querySelector('[data-filter]')) { try { setK(decodeURIComponent(m[1])); } catch (err) {} }
+  }
+  fromHash();
+  window.addEventListener('hashchange', fromHash);
   // Popup status admin: chat online terus (konfirmasi pemilik), keterangan mengikuti jam operasional kantor 08.00–20.00 WIB
   var popClosed = false;
   try { popClosed = sessionStorage.getItem('el-pop') === '1'; } catch (err) {}
