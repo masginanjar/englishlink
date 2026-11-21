@@ -10,6 +10,7 @@ export default {
     nav: { services: 'Layanan', docs: 'Jenis Dokumen', how: 'Cara Kerja', blog: 'Artikel', about: 'Tentang', faq: 'FAQ', contact: 'Kontak' },
     skip: 'Lompat ke konten',
     online: { hi: 'Hai, admin sedang online!', on: 'Dokumen apa yang ingin kamu terjemahkan? Konsultasi sekarang, gratis.', off: 'Dokumen apa yang ingin kamu terjemahkan? Konsultasi sekarang, gratis.', close: 'Tutup' },
+    consent: { text: 'Boleh kami pakai cookie Google Analytics untuk menghitung pengunjung? Tidak dipakai untuk iklan.', yes: 'Boleh', no: 'Tidak', more: 'Selengkapnya', manage: 'Atur cookie' },
     area: 'Area layanan', kicker: 'Panduan', allTopics: 'Semua',
     menu: 'Menu',
     waCta: 'Chat WhatsApp',
@@ -53,7 +54,7 @@ export default {
     faq: { title: 'FAQ Terjemahan Tersumpah: Biaya, Waktu, Hasil | Englishlink', desc: 'Jawaban singkat soal biaya per halaman, lama pengerjaan, dokumen asli, hasil digital dan cetak, revisi, serta kerahasiaan dokumen.' },
     contact: { title: 'Kontak Englishlink Translator | WhatsApp 0851-7413-2344', desc: 'Hubungi Englishlink via WhatsApp 0851-7413-2344 atau info@englishlink.co.id. Caraka Tower, Jakarta Selatan. Buka tiap hari 08.00–20.00 WIB.' },
     area: { title: 'Area Layanan Penerjemah Tersumpah Inggris | Englishlink', desc: 'Englishlink melayani terjemahan tersumpah Inggris–Indonesia secara online untuk berbagai kota dan kabupaten di Indonesia, dari kantor di Jakarta Selatan.' },
-    privacy: { title: 'Kebijakan Privasi | Englishlink Translator', desc: 'Cara Englishlink memperlakukan data dan dokumenmu: formulir tidak disimpan di server, percakapan berlangsung di WhatsApp.' },
+    privacy: { title: 'Kebijakan Privasi | Englishlink Translator', desc: 'Cara Englishlink memperlakukan data dan dokumenmu: formulir tidak disimpan di server, statistik pengunjung hanya jalan kalau kamu izinkan.' },
   },
 
   home: {
@@ -237,6 +238,7 @@ export default {
       { t: 'Formulir di situs ini', d: 'Formulir estimasi tidak menyimpan data ke server mana pun. Isinya hanya disusun jadi pesan, lalu kamu sendiri yang mengirimnya lewat WhatsApp.' },
       { t: 'Percakapan dan dokumen', d: 'Percakapan dan pengiriman dokumen berlangsung di WhatsApp atau email. Dokumen hanya dipakai untuk memberi estimasi dan mengerjakan terjemahan.' },
       { t: 'Berbagi ke pihak lain', d: 'Dokumenmu tidak dibagikan ke pihak lain di luar keperluan pengerjaan layanan yang kamu pesan.' },
+      { t: 'Statistik pengunjung dan cookie', d: 'Kalau kamu memilih "Boleh" di pemberitahuan cookie, situs ini memakai Google Analytics untuk menghitung jumlah kunjungan, halaman yang dibuka, dan asal pengunjung secara umum. Google Analytics memasang cookie di perangkatmu dan datanya diproses oleh Google. Kalau kamu memilih "Tidak", Google Analytics tidak dimuat sama sekali. Pilihanmu bisa diubah kapan saja lewat tautan "Atur cookie" di bagian bawah halaman.' },
       { t: 'Punya pertanyaan?', d: 'Hubungi kami di info@englishlink.co.id atau WhatsApp 0851-7413-2344.' },
     ],
   },

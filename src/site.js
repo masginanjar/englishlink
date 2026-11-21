@@ -85,12 +85,42 @@
   }
   fromHash();
   window.addEventListener('hashchange', fromHash);
+  // Izin cookie + Google Analytics: GA hanya dimuat setelah pengunjung memilih "Boleh", dan hanya di domain asli
+  var cBox = function () { return document.querySelector('[data-consent]'); };
+  var live = /(^|\.)englishlink\.co\.id$/.test(location.hostname);
+  var gaOn = false;
+  function getC() { try { return localStorage.getItem('el-consent'); } catch (err) { return null; } }
+  function setC(v) { try { localStorage.setItem('el-consent', v); } catch (err) {} }
+  function loadGA() {
+    var box = cBox(); var id = box && box.getAttribute('data-ga');
+    if (gaOn || !live || !id) return;
+    gaOn = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', id);
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+    document.head.appendChild(s);
+  }
+  function consentOpen() { return !!(cBox() && !cBox().hidden); }
+  if (live) { if (getC() === 'yes') loadGA(); else if (getC() !== 'no' && cBox()) cBox().hidden = false; }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest && e.target.closest('[data-consent-yes],[data-consent-no],[data-consent-open]');
+    if (!t) return;
+    if (t.hasAttribute('data-consent-open')) { if (cBox()) cBox().hidden = false; return; }
+    var yes = t.hasAttribute('data-consent-yes');
+    var was = getC();
+    setC(yes ? 'yes' : 'no');
+    if (cBox()) cBox().hidden = true;
+    if (yes) loadGA(); else if (was === 'yes') location.reload();
+  });
   // Popup status admin: chat online terus (konfirmasi pemilik), keterangan mengikuti jam operasional kantor 08.00–20.00 WIB
   var popClosed = false;
   try { popClosed = sessionStorage.getItem('el-pop') === '1'; } catch (err) {}
   function showPop() {
     var pop = document.querySelector('[data-online]');
-    if (!pop || popClosed || pop.getAttribute('data-ready')) return;
+    if (!pop || popClosed || consentOpen() || pop.getAttribute('data-ready')) return;
     var h = (new Date().getUTCHours() + 7) % 24;
     var on = h >= 8 && h < 20;
     pop.querySelector('[data-online-text]').textContent = pop.getAttribute(on ? 'data-on' : 'data-off');

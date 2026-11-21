@@ -332,16 +332,18 @@ function chrome(page) {
 </div></header>`;
   const footer = `<footer class="site-footer"><div class="wrap foot">
   <div><a class="logo on-dark" href="${P.home}"><span class="logo-mark">E<span>⇄</span></span><span class="logo-text">english<b>link</b></span></a><p>${esc(U.footerTag)}</p></div>
-  <div><h2>${esc(U.footerExplore)}</h2><ul>${navItems.map((k) => `<li><a href="${P[k]}">${esc(U.nav[k])}</a></li>`).join('')}${P.area ? `<li><a href="${P.area}">${esc(U.area)}</a></li>` : ''}<li><a href="${P.privacy}">${esc(U.privacy)}</a></li></ul></div>
+  <div><h2>${esc(U.footerExplore)}</h2><ul>${navItems.map((k) => `<li><a href="${P[k]}">${esc(U.nav[k])}</a></li>`).join('')}${P.area ? `<li><a href="${P.area}">${esc(U.area)}</a></li>` : ''}<li><a href="${P.privacy}">${esc(U.privacy)}</a></li><li><button type="button" class="linklike" data-consent-open>${esc(U.consent.manage)}</button></li></ul></div>
   <div><h2>${esc(U.footerContact)}</h2><ul><li><a href="${wa(U.form.fallback)}" rel="noopener">WhatsApp ${WA_DISPLAY[page.lang]}</a></li><li><a href="mailto:${EMAIL}">${EMAIL}</a></li><li>${esc(U.address)}</li><li>${esc(U.hours)}</li></ul>${socialLinks()}</div>
 </div><div class="wrap copy">© ${new Date().getFullYear()} Englishlink Translator · PT. Penerjemah Tersumpah Indonesia</div></footer>
 <a class="wa-float" href="${wa(U.form.fallback)}" rel="noopener">${waIcon}<span>${esc(U.waCta)}</span></a>
+<div class="consent" data-consent data-ga="${GA_ID}" hidden role="region" aria-label="Cookie"><p>${esc(U.consent.text)} <a href="${P.privacy}">${esc(U.consent.more)}</a></p><div class="consent-btns"><button type="button" class="btn btn-sm btn-ghost" data-consent-no>${esc(U.consent.no)}</button><button type="button" class="btn btn-sm btn-primary" data-consent-yes>${esc(U.consent.yes)}</button></div></div>
 <div class="online-pop" data-online hidden data-on="${esc(U.online.on)}" data-off="${esc(U.online.off)}" role="status"><span class="dot"></span><div><strong>${esc(U.online.hi)}</strong><p data-online-text></p></div><a class="btn btn-sm btn-wa" href="${wa(U.form.fallback)}" rel="noopener">${waIcon}<span>Chat</span></a><button type="button" data-online-close aria-label="${esc(U.online.close)}">×</button></div>`;
   return `${header}<main id="main">${page.body}</main>${footer}`;
 }
 // CSP lewat <meta>: berlaku di GitHub Pages. frame-ancestors diabaikan browser pada meta,
 // jadi tidak ditulis di sini (ada di vercel.json dan panduan Cloudflare). Pengaman bingkai: /assets/frame.js.
-const CSP = "default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https://wa.me; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; upgrade-insecure-requests";
+const CSP = "default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https://wa.me; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; font-src 'self'; style-src 'self'; script-src 'self' https://www.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; upgrade-insecure-requests";
+const GA_ID = 'G-4F2MLC6PWP'; // Google Analytics 4, hanya dimuat setelah pengunjung setuju (lihat src/site.js)
 const HEAD_SECURITY = `<meta http-equiv="Content-Security-Policy" content="${CSP}">\n<meta name="referrer" content="strict-origin-when-cross-origin">`;
 function html(page) {
   const L = LANGS[page.lang];
