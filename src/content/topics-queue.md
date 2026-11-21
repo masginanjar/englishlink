@@ -16,7 +16,7 @@
 - [x] Pertanyaan yang Perlu Diajukan Sebelum Memesan Terjemahan Dokumen
 
 ## Berikutnya
-- [ ] Bagaimana Menyiapkan Dokumen agar Hasil Terjemahan Lebih Akurat?
+- [x] Bagaimana Menyiapkan Dokumen agar Hasil Terjemahan Lebih Akurat?
 - [ ] Mengapa Ejaan Nama di Dokumen Penting untuk Diperiksa?
 - [ ] Apostille Itu Apa dan Kapan Dokumen Perlu Diapostille?
 - [ ] Beda Legalisasi dan Apostille, Mana yang Kamu Butuhkan?
