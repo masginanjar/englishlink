@@ -1,5 +1,6 @@
 // Englishlink Translator — generator situs statis.
 // Jalankan: `npm run build` (hasil di dist/) atau `npm run preview` (satu file demo di preview/index.html).
+import { LOGO_ARROW, LOGO_WORD, LOGO_SUB } from './src/logo.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -104,6 +105,9 @@ function loadPosts(lang) {
     .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.slug.localeCompare(b.slug)));
 }
 const fmtDate = (d, lang) => new Date(d + 'T00:00:00Z').toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+
+// Logo resmi (bentuk dari src/logo.mjs). Versi gelap: tulisan putih + "Translator" amber, sesuai brand guideline.
+const logoSvg = (dark) => `<svg class="logo-svg" viewBox="26 26 450 148" aria-hidden="true" focusable="false"><circle cx="100" cy="100" r="70" fill="#014ae2"/><path d="${LOGO_ARROW}" fill="#ffffff"/><path d="${LOGO_WORD}" fill="${dark ? '#ffffff' : '#0b1f4b'}"/><path d="${LOGO_SUB}" fill="${dark ? '#ffb81f' : '#014ae2'}"/></svg>`;
 
 // ---------- Komponen ----------
 const btnWa = (t, msg, cls = 'btn btn-wa') => `<a class="${cls}" href="${wa(msg)}" rel="noopener">${waIcon}<span>${esc(t)}</span></a>`;
@@ -325,13 +329,13 @@ function chrome(page) {
   const nav = navItems.map((k) => (megaItems[k] ? mega(k, megaItems[k]) : `<li><a href="${P[k]}"${cur(k)}>${esc(U.nav[k])}</a></li>`)).join('');
   const header = `<a class="skip" href="#main">${esc(U.skip)}</a>
 <header class="site-header"><div class="wrap bar">
-  <a class="logo" href="${P.home}" aria-label="Englishlink Translator"><span class="logo-mark">E<span>⇄</span></span><span class="logo-text">english<b>link</b></span></a>
+  <a class="logo" href="${P.home}" aria-label="Englishlink Translator">${logoSvg(false)}</a>
   <nav class="nav" id="nav" aria-label="${esc(U.menu)}"><ul>${nav}<li class="nav-contact"><a href="${P.contact}"${cur('contact')}>${esc(U.nav.contact)}</a></li></ul></nav>
   <div class="bar-end"><a class="lang" href="${alt.path}" hreflang="${alt.lang}" lang="${alt.lang}">${esc(U.langSwitch)}</a>${btnWa(U.waCta, U.form.fallback, 'btn btn-primary btn-sm hide-m')}
   <button class="menu-btn" type="button" data-menu aria-controls="nav" aria-expanded="false"><span></span><span></span><span class="sr">${esc(U.menu)}</span></button></div>
 </div></header>`;
   const footer = `<footer class="site-footer"><div class="wrap foot">
-  <div><a class="logo on-dark" href="${P.home}"><span class="logo-mark">E<span>⇄</span></span><span class="logo-text">english<b>link</b></span></a><p>${esc(U.footerTag)}</p></div>
+  <div><a class="logo on-dark" href="${P.home}" aria-label="Englishlink Translator">${logoSvg(true)}</a><p>${esc(U.footerTag)}</p></div>
   <div><h2>${esc(U.footerExplore)}</h2><ul>${navItems.map((k) => `<li><a href="${P[k]}">${esc(U.nav[k])}</a></li>`).join('')}${P.area ? `<li><a href="${P.area}">${esc(U.area)}</a></li>` : ''}<li><a href="${P.privacy}">${esc(U.privacy)}</a></li><li><button type="button" class="linklike" data-consent-open>${esc(U.consent.manage)}</button></li></ul></div>
   <div><h2>${esc(U.footerContact)}</h2><ul><li><a href="${wa(U.form.fallback)}" rel="noopener">WhatsApp ${WA_DISPLAY[page.lang]}</a></li><li><a href="mailto:${EMAIL}">${EMAIL}</a></li><li>${esc(U.address)}</li><li>${esc(U.hours)}</li></ul>${socialLinks()}</div>
 </div><div class="wrap copy">© ${new Date().getFullYear()} Englishlink Translator · PT. Penerjemah Tersumpah Indonesia</div></footer>
@@ -376,7 +380,7 @@ ${chrome(page)}
 const heroCss = HERO.map((h, i) => `.slide.hero-bg-${i}{background-color:${h.bg}}`).join('');
 const css = read('src/styles.css') + (heroCss ? `\n${heroCss}\n` : '');
 const js = read('src/site.js');
-const favicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#1b5cff"/><text x="32" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="36" fill="#ffffff">E</text></svg>';
+const favicon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 30 140 140"><circle cx="100" cy="100" r="70" fill="#014ae2"/><path d="${LOGO_ARROW}" fill="#ffffff"/></svg>`;
 const write = (rel, content) => { const f = path.join(ROOT, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, rel.endsWith('.html') && !PREVIEW ? withBase(content) : content); };
 const copyFonts = (destDir) => {
   fs.mkdirSync(destDir, { recursive: true });
