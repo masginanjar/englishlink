@@ -416,7 +416,7 @@ ${HEAD_SECURITY}
 <link rel="canonical" href="${url}">${alts}
 <meta property="og:type" content="${page.ogType || 'website'}"><meta property="og:site_name" content="Englishlink Translator"><meta property="og:title" content="${esc(page.title)}"><meta property="og:description" content="${esc(page.desc)}"><meta property="og:url" content="${url}"><meta property="og:locale" content="${L.locale}">
 ${page.ogImage ? `<meta property="og:image" content="${page.ogImage}">` : ''}<meta name="twitter:card" content="${page.ogImage ? 'summary_large_image' : 'summary'}"><meta name="twitter:title" content="${esc(page.title)}"><meta name="twitter:description" content="${esc(page.desc)}">${page.published ? `<meta property="article:published_time" content="${page.published}"><meta property="article:modified_time" content="${page.modified}"><meta property="article:section" content="${esc(page.section)}">` : ''}<meta name="theme-color" content="#1b5cff">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script src="/assets/frame.js"></script>
 <link rel="stylesheet" href="/assets/styles.css">
 ${page.schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s).replace(/</g, '\\u003c')}</script>`).join('\n')}
