@@ -115,6 +115,12 @@
     if (cBox()) cBox().hidden = true;
     if (yes) loadGA(); else if (was === 'yes') location.reload();
   });
+  // Catat klik WhatsApp/telepon sebagai peristiwa Analytics (hanya terkirim kalau pengunjung mengizinkan cookie)
+  document.addEventListener('click', function (e) {
+    var l = e.target.closest && e.target.closest('a[href*="wa.me"],a[href^="tel:"]');
+    if (!l || typeof window.gtag !== 'function') return;
+    window.gtag('event', l.getAttribute('href').indexOf('tel:') === 0 ? 'klik_telepon' : 'klik_whatsapp', { posisi: l.getAttribute('data-cta') || 'lainnya', halaman: location.pathname });
+  });
   // Popup status admin: chat online terus (konfirmasi pemilik), keterangan mengikuti jam operasional kantor 08.00–20.00 WIB
   var popClosed = false;
   try { popClosed = sessionStorage.getItem('el-pop') === '1'; } catch (err) {}
