@@ -7,9 +7,9 @@ Tanda: `[x]` sudah terbit, `[-]` dilewati (beri alasan singkat).
 - [x] Jakarta Pusat
 - [x] Jakarta Barat
 - [x] Jakarta Timur
+- [x] Jakarta Utara
 
 ## Berikutnya
-- [ ] Jakarta Utara
 - [ ] Kota Surabaya
 - [ ] Kota Bandung
 - [ ] Kota Medan
