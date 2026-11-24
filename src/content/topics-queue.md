@@ -18,7 +18,7 @@
 ## Berikutnya
 - [x] Bagaimana Menyiapkan Dokumen agar Hasil Terjemahan Lebih Akurat?
 - [x] Mengapa Ejaan Nama di Dokumen Penting untuk Diperiksa?
-- [ ] Apostille Itu Apa dan Kapan Dokumen Perlu Diapostille?
+- [x] Apostille Itu Apa dan Kapan Dokumen Perlu Diapostille?
 - [ ] Beda Legalisasi dan Apostille, Mana yang Kamu Butuhkan?
 - [ ] Menikah dengan WNA: Dokumen yang Biasanya Perlu Diterjemahkan
 - [ ] Terjemahan SKCK ke Bahasa Inggris: Hal yang Perlu Dicek
